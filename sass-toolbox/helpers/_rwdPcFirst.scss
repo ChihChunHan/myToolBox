@@ -1,4 +1,4 @@
-@mixin RWD($setpoint) {
+@mixin rwd($setpoint) {
   @media screen and (max-width: rwdGetMap($setpoint,breakpoints) ) {
     @content;
   }

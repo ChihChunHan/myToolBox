@@ -1,0 +1,16 @@
+@mixin fontZWC($z,$w,$c) {
+  font-size: $z;
+  font-weight: $w;
+  color: $c;
+}
+
+@mixin nthType($nth) {
+  @if $nth == 1 {
+    &:first-of-type { @content; }
+  } @else if $nth == -1 {
+    &:last-of-type { @content; }
+  } @else {
+    &:nth-of-type(#{$nth}) { @content; }
+  }
+}
+

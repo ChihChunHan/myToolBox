@@ -1,0 +1,5 @@
+@mixin RWD($setpoint) {
+  @media screen and (min-width: rwdGetMap($setpoint,breakpoints) ) {
+    @content;
+  }
+};

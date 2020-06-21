@@ -1,0 +1,30 @@
+
+$mediaListPcFirst:xl,lg,md,sm;
+$mediaListMobileFirst:sm,md,lg,xl;
+
+$rwd: (
+    xl: (
+      breakpoints:1440px,
+      container:1440px,
+      fontSize:20px
+      ),
+    lg: (
+      breakpoints:960px,
+      container:960px,
+      fontSize:20px
+      ),
+    md: (
+      breakpoints:768px,
+      container:768px,
+      fontSize:20px
+      ),
+    sm: (
+      breakpoints:480px,
+      container:480px,
+      fontSize:20px
+      ),
+);
+
+
+
+

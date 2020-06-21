@@ -1,0 +1,139 @@
+
+// display
+@mixin display {
+  &-i{ display: inline !important; }
+  &-b{ display: block !important; }
+  &-i-b{ display: inline-block !important; }
+  &-f{ display: flex !important; }
+  &-n{ display: none !important; }
+}
+
+@mixin g-d {
+  .d { 
+    @include display ;
+    @each $key in $mediaListMobileFirst {
+      @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+        @at-root .#{$key}\:{
+          &d {
+            @include display ;
+          }      
+        }
+      }
+    }
+  }
+}
+
+// flex 
+
+@mixin flex-direction {
+  &-row { flex-direction: row !important; }
+  &-row-re { flex-direction: row-reverse !important; }
+  &-col { flex-direction: column !important; }
+  &-col-re { flex-direction: column-reverse !important; }
+}
+@mixin justify-content {
+  &-s { justify-content: flex-start !important; }
+  &-c { justify-content: center !important; }
+  &-e { justify-content: flex-end !important; }
+  &-b { justify-content: space-between !important; }
+  &-r { justify-content: space-around !important; }
+}
+@mixin align-items {
+  &-s { align-items: flex-start !important; }
+  &-c { align-items: center !important; }
+  &-e { align-items: flex-end !important; }
+}
+
+@mixin align-self {
+  &-s { align-self: flex-start !important; }
+  &-c { align-self: center !important; }
+  &-e { align-self: flex-end !important; }
+}
+
+@mixin g-flex {
+  .f-d { @include flex-direction }
+  .j-c { @include justify-content }
+  .a-i { @include align-items }
+  .a-s { @include align-self }
+
+  @each $key in $mediaListMobileFirst {
+    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+      @at-root .#{$key}\:{
+        &f-d { @include flex-direction }
+        &j-c { @include justify-content }
+        &a-i { @include align-items }   
+        &a-s { @include align-self }
+      }
+    }
+  }
+}
+
+// float
+
+@mixin float{
+  &-l{ float: left !important; };
+  &-r{ float: right !important; };
+  &-n{ float: none !important; };
+}
+
+@mixin clearfix{
+  &::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin g-float {
+  .fl { @include float ;}
+  .fl-fix { @include clearfix ;}
+
+  @each $key in $mediaListMobileFirst {
+    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+      @at-root .#{$key}\:{
+        &fl {
+          @include float;
+        }    
+        &fl-fix{
+          @include clearfix;
+        }
+      }
+    }
+  }
+}
+
+// textalign
+
+@mixin text {
+  &-l { text-align: left !important; }
+  &-c { text-align: center !important; }
+  &-r { text-align: right !important;}
+}
+
+@mixin g-text {
+  .txt { @include text ;}
+
+  @each $key in $mediaListMobileFirst {
+    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+      @at-root .#{$key}\:{
+        &txt {
+          @include text;
+        }    
+      }
+    }
+  }
+}
+
+// @include
+
+// display
+@include g-d;
+
+// flex
+@include g-flex; 
+
+// float
+@include g-float;
+
+// text-align
+@include g-text;

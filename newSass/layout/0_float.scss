@@ -1,0 +1,202 @@
+$btnR: 100px;
+$btnOL: 7px;
+$btnC: #c70002;
+
+%poa-align {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%rounded {
+  border-radius: 50%;
+}
+
+@mixin bdi-Zline($deg, $many, $color1, $color2, $length) {
+  $list: $deg;
+  $num: $many;
+  @for $i from 0 through $num {
+    $list: append($list, $color1 #{100% / $num * $i}, comma);
+    $list: append($list, $color2 #{100% / $num * $i}, comma);
+    $list: append($list, $color2 #{100% / $num * $i + $length}, comma);
+    $list: append($list, $color1 #{100% / $num * $i + $length}, comma);
+  }
+  background-image: linear-gradient($list);
+}
+
+body {
+  position: relative;
+  > .floatbtn {
+    position: fixed;
+    right:-20px;
+    z-index: 2;
+    @include nthType(1) {
+      bottom: 30px;
+    }
+    @include nthType(2) {
+      bottom: -20px;
+    }
+    transform: scale(0.4);
+    @include rwd(md){
+      transform: scale(1);
+    }
+
+    
+    .btn {
+      position: relative;
+      
+      &:hover {
+        .ball {
+          transform: rotate(360deg);
+        }
+        .icon {
+          background-color: rgb(230, 0, 0);
+        }
+      }
+
+    }
+
+    .outline {
+      height: $btnR;
+      width: $btnR;
+      border: 1px solid $btnC;
+      border-radius: 50%;
+      @extend %poa-align;
+      animation: outline 1.5s ease-out infinite;
+      &::before {
+        height: $btnR;
+        width: $btnR;
+        content: "";
+        display: block;
+        @extend %poa-align;
+        border: 1px solid $btnC;
+        border-radius: 50%;
+        animation: outline 1.5s ease-out 0.5s infinite;
+      }
+      &::after {
+        height: $btnR;
+        width: $btnR;
+        content: "";
+        display: block;
+        @extend %poa-align;
+        border: 1px solid $btnC;
+        border-radius: 50%;
+        animation: outline 1.5s ease-out 1s infinite;
+      }
+    }
+
+    @keyframes outline {
+      0% {
+        height: $btnR;
+        width: $btnR;
+        border: 1px solid $btnC;
+      }
+      100% {
+        height: $btnR + $btnOL * 3;
+        width: $btnR + $btnOL * 3;
+        border: 1px solid transparent;
+      }
+    }
+
+    .ball {
+      height: $btnR;
+      width: $btnR;
+      position: relative;
+      transition: transform 1s;
+      .b1 {
+        height: $btnR / 5;
+        width: $btnR / 5;
+        background-color: $btnC;
+        border-radius: 50%;
+        position: absolute;
+        top: -5%;
+        left: -2%;
+      }
+      .b2 {
+        height: $btnR / 10;
+        width: $btnR / 10;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        top: -5%;
+        left: 15%;
+      }
+      .b3 {
+        height: $btnR / 7;
+        width: $btnR / 7;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 15%;
+        right: -10%;
+      }
+      .b4 {
+        height: $btnR / 3;
+        width: $btnR / 3;
+        background-color: $btnC;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    .icon {
+      box-sizing: border-box;
+      height: $btnR;
+      width: $btnR;
+      background-color: $btnC;
+      @include bdi-Zline(-45deg, 30, transparent, rgba(black, 0.1), 1%);
+      border-radius: 50%;
+      border-top: 0px solid rgba(black, 0.5);
+      border-left: 0px solid rgba(black, 0.5);
+      border-right: 4px solid rgba(black, 0.5);
+      border-bottom: 1px solid rgba(black, 0.5);
+      @extend %poa-align;
+      z-index: 999;
+      &::before {
+        box-sizing: border-box;
+        content: "";
+        display: block;
+        height: $btnR;
+        width: $btnR;
+        @extend %poa-align;
+        border-radius: 50%;
+        border-top: 1px solid rgba(#ff0202, 1);
+        border-left: 4px solid rgba(#ff0202, 1);
+        border-right: 0px solid rgba(#ff0202, 1);
+        border-bottom: 4px solid rgba(#ff0202, 1);
+      }
+      p {
+        margin-left: 2px;
+        margin-top: -5px;
+        color: #f9f56a;
+        @extend %poa-align;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        span {
+          color: #fff;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    @include rwd(md) {
+      right: 30px;
+      @include nthType(1) {
+        bottom: 150px;
+      }
+      @include nthType(2) {
+        bottom: 30px;
+      }
+      > img {
+        width: 129px;
+      }
+    }
+  }
+}

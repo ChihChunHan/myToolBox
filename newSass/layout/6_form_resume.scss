@@ -1,0 +1,336 @@
+.resume-form{
+  position: relative;
+  z-index: 3;
+  background-image: 
+  url('../assets/6_form_resume/form_resume_bg-m.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  @include rwd(sm){
+    background-image: 
+    url('../assets/6_form_resume/form_resume_bg.png');
+    overflow: hidden;
+  }
+
+  .topbtn{
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    transform: translateX(50%);
+    right: 50%;
+    bottom: 50px;
+    z-index: 1;
+    @include rwd(md){
+      width: 60px;
+      height: 60px;
+      right: 34px;
+      transform: translateX(0);
+      bottom: 95px;
+    }
+    animation: swing 2s infinite ease-in-out;
+  }
+
+  @keyframes swing {
+    0%{
+      bottom: 50px;
+    }
+    30%{
+      bottom: 60px;
+    }
+    60%{
+      bottom: 50px;
+    }
+    100%{
+      bottom: 50px;
+    }
+  }
+  @include rwd(md){
+    @keyframes swing {
+      0%{
+        bottom: 95px;
+      }
+      30%{
+        bottom: 110px;
+      }
+      60%{
+        bottom: 95px;
+      }
+      100%{
+        bottom: 95px;
+      }
+    }
+  }
+
+  .container{
+    padding: 70px 0;
+    max-width: 966px;
+  }
+
+  .title{
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+  .card{
+    background-color: $reformcardbg;
+    padding: 20px 10px;
+    padding-bottom: 90px;
+    border-radius: 10px;
+    position: relative;
+    
+    @include rwd(md){
+      padding: 40px 108px;
+    }
+
+    .people{
+      height: 220px;
+      width: 50%;
+      position: absolute;
+      left: 20px;
+      bottom: -70px;
+      object-fit: cover;
+      object-position: left top;
+
+      @include rwd(md){
+        width: 40%;
+        height: 300px;
+      }
+      
+      @include rwd(xl){
+        width: 310px;
+        height: 856px;;
+        left: -310px;
+        object-position: left top;
+      }
+    }
+  }
+
+  h5,h6,span,li{
+    color: #fff;
+  }
+
+  h6 {
+    margin-bottom: 10px;
+    white-space:nowrap;
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    margin-left: 16px;
+    margin-right: 8px;
+    @include rwd(sm){
+      margin-bottom: 0px;
+      margin-left: 8px;
+    }
+  }
+
+  h5 {
+  
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: $formLabelGutter;
+  }
+
+  p{
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    white-space:nowrap;
+    margin-left: 16px;
+    margin-right: 8px;
+    @include rwd(md){
+      white-space: nowrap;
+    }
+  }
+  span {
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    white-space:nowrap;
+    margin-right: 8px;
+  }
+  label{
+    margin: $formLabelGutter 0;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+
+    input{
+      width: 100%;
+      height: 90%;
+      border: 0;
+      outline: none;
+    }
+
+    @include rwd(md){
+      height: 65px;
+    }
+  }
+
+  form{
+    > div.d-f{
+      >label{
+        width: 100%;
+      }
+      @include rwd(md){
+        >label{
+          width: calc( 50% - #{$formLabelGutter } );
+        }
+      }
+    }
+  }
+
+  .stat{
+    @include rwd(md){
+      margin-top:$formLabelGutter*2;
+      margin-bottom:$formLabelGutter;
+    }
+  }
+
+
+  .which{
+    width: 100%;
+    label{
+      background: transparent;
+      border: 0;
+      margin: 0;
+      padding: 10px;
+      @include nthType(1){
+          margin-top: $formLabelGutter / 2;
+          margin-bottom: $formLabelGutter;
+          @include rwd(md){
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+      }
+      @include customCheckIcon();
+      label {
+        background-color: #fff;
+        border: 1px solid #a0a0a0;
+        width: 100%;
+        span {
+          margin-left: 10px;
+          color: #000;
+        }
+      }
+      
+      @include rwd(md){
+        flex-basis: 50%;
+        padding: 0;
+      }
+    }
+  }
+  select{
+    margin-right: 5px;
+    padding-left: 10px;
+    font-weight: 500;
+    width: 100%;
+    height: 90%;
+    border-radius: 5px;
+    // border: 1px solid #a0a0a0;
+    border: 0;
+  }
+
+  .onb{
+    width: 100%;
+    label{
+      background: transparent;
+      border: 0;
+      margin: 0;
+      padding: 10px;
+
+      label {
+        background-color: #fff;
+        border: 1px solid #a0a0a0;
+        width: 100%;
+
+        span {
+          margin-left: 10px;
+          color: #000;
+        }
+      }
+
+      @include nthType(1){
+        margin-top: $formLabelGutter / 2;
+        margin-bottom: $formLabelGutter;
+        @include rwd(md){
+          margin-top: 0;
+          margin-bottom: 0;
+          span {
+            margin-left: 10px;
+            margin-right: 20px;
+          }
+        }
+      }
+      
+      @include nthType(-1){
+        @include rwd(md){
+          width: 100%;
+          input {
+            flex-basis: 20px;
+            flex-shrink: 0;
+          }
+          span {
+            margin-left: 10px;
+            margin-right: 20px;
+          }
+        }
+      }
+      @include rwd(md){
+        padding: 0;
+      }
+    }
+    @include customCheckIcon();
+  }
+  
+  button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: $cTxt;
+    padding: 19px 0;
+    width: 100%;
+    background-color: #000;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.2em;
+    letter-spacing: 1.2px;
+    &:hover{
+      background-color: #333;
+      box-shadow: 0px 3px 15px -2px rgba(white,0.3);
+    }
+    &:active{
+      color: $cSecondary;
+    }
+    @include rwd(md){
+      margin-top: 10px;
+      margin-bottom: 40px;
+      max-width: 288px;
+    }
+  }
+
+  ul{
+    width: 50%;
+    position: relative;
+    left: 40%;
+    @include rwd(xl){
+      width: 100%;
+      left: 0;
+    }
+    li{
+      font-size: 0.8em;
+      position: relative;
+      left: 1em;
+      &::before{
+        content: "※";
+        position: absolute;
+        left:-1em;
+      }
+    }
+    @include rwd(xl){
+      width: 100%;
+      li {
+        line-height: 1.88;
+      }
+    }
+  }
+}

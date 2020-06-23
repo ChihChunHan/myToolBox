@@ -1,0 +1,11 @@
+@mixin bdi-Zline($deg, $many, $color1, $color2, $length) {
+  $list: $deg;
+  $num: $many;
+  @for $i from 0 through $num {
+    $list: append($list, $color1 #{100% / $num * $i}, comma);
+    $list: append($list, $color2 #{100% / $num * $i}, comma);
+    $list: append($list, $color2 #{100% / $num * $i + $length}, comma);
+    $list: append($list, $color1 #{100% / $num * $i + $length}, comma);
+  }
+  background-image: linear-gradient($list);
+}

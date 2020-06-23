@@ -1,0 +1,61 @@
+@mixin fontZWC($z,$w,$c) {
+  font-size: $z;
+  font-weight: $w;
+  color: $c;
+}
+
+@mixin nthType($nth) {
+  @if $nth == 1 {
+    &:first-of-type { @content; }
+  } @else if $nth == -1 {
+    &:last-of-type { @content; }
+  } @else {
+    &:nth-of-type(#{$nth}) { @content; }
+  }
+}
+
+@mixin m($space){
+  margin: $space;
+}
+
+@mixin mt($space){
+  margin-top: $space;
+}
+
+@mixin mr($space){
+  margin-right: $space;
+}
+
+@mixin mb($space){
+  margin-bottom: $space;
+}
+
+@mixin ml($space){
+  margin-left: $space;
+}
+
+@mixin mx($space){
+  @include ml($space);
+  @include mr($space);
+}
+
+@mixin my($space){
+  @include mt($space);
+  @include mb($space);
+}
+
+// text out-line
+@mixin txtOL($length,$color:#fff){
+  text-shadow: 
+  0px #{$length} 0px $color,
+  #{$length} 0px 0px $color,
+  0px -#{$length} 0px $color,
+  -#{$length} 0px 0px $color,
+  #{$length/2} #{$length/2} 0px $color,
+  -#{$length/2} #{$length/2} 0px $color,
+  #{$length/2} -#{$length/2} 0px $color,
+  -#{$length/2} -#{$length/2} 0px $color
+  ;
+}
+
+

@@ -12,3 +12,11 @@
 @function rwdGetMap($setPoint,$key) {
   @return map-get((map-get($rwd,$setPoint)),$key)
 };
+
+@function pow($v,$t){
+  @if $t == 0 { @return 1 }
+
+  $nv:$v;
+  @for $i from 1 to $t { $nv:$nv*$v }
+  @return $nv;
+}

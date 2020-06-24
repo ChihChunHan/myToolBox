@@ -1,7 +1,5 @@
-$bgSize:35px;
-$bgImg:url();
 
-select {
+@mixin select ($bgSize:35px,$bgImg:url()) {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;       /* Remove default arrow */

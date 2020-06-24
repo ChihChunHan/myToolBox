@@ -1,11 +1,11 @@
 
 // display
 @mixin display {
-  &-i{ display: inline; }
-  &-b{ display: block; }
-  &-i-b{ display: inline-block; }
-  &-f{ display: flex; }
-  &-n{ display: none; }
+  &-inline{ display: inline; }
+  &-blick{ display: block; }
+  &-inline-block{ display: inline-block; }
+  &-flex{ display: flex; }
+  &-none{ display: none; }
 }
 
 @mixin g-d {
@@ -27,42 +27,44 @@
 
 @mixin flex-direction {
   &-row { flex-direction: row !important; }
-  &-row-re { flex-direction: row-reverse !important; }
+  &-row-reverse { flex-direction: row-reverse !important; }
   &-col { flex-direction: column !important; }
-  &-col-re { flex-direction: column-reverse !important; }
+  &-col-reverse { flex-direction: column-reverse !important; }
 }
 @mixin justify-content {
-  &-s { justify-content: flex-start !important; }
-  &-c { justify-content: center !important; }
-  &-e { justify-content: flex-end !important; }
-  &-b { justify-content: space-between !important; }
-  &-r { justify-content: space-around !important; }
+  &-start { justify-content: flex-start !important; }
+  &-center { justify-content: center !important; }
+  &-end { justify-content: flex-end !important; }
+  &-between { justify-content: space-between !important; }
+  &-around { justify-content: space-around !important; }
 }
 @mixin align-items {
-  &-s { align-items: flex-start !important; }
-  &-c { align-items: center !important; }
-  &-e { align-items: flex-end !important; }
+  &-start { align-items: flex-start !important; }
+  &-center { align-items: center !important; }
+  &-end { align-items: flex-end !important; }
+  &-stretch { align-items: stretch !important; }
 }
 
 @mixin align-self {
-  &-s { align-self: flex-start !important; }
-  &-c { align-self: center !important; }
-  &-e { align-self: flex-end !important; }
+  &-start { align-self: flex-start !important; }
+  &-center { align-self: center !important; }
+  &-end { align-self: flex-end !important; }
+  &-stretch { align-self: stretch !important; }
 }
 
 @mixin g-flex {
-  .f-d { @include flex-direction }
-  .j-c { @include justify-content }
-  .a-i { @include align-items }
-  .a-s { @include align-self }
+  .flex { @include flex-direction }
+  .justify { @include justify-content }
+  .items { @include align-items }
+  .self { @include align-self }
 
   @each $key in $mediaList {
     @include rwd($key) {
       @at-root .#{$key}\:{
-        &f-d { @include flex-direction }
-        &j-c { @include justify-content }
-        &a-i { @include align-items }   
-        &a-s { @include align-self }
+        &flex { @include flex-direction }
+        &justify { @include justify-content }
+        &items { @include align-items }
+        &self { @include align-self }
       }
     }
   }
@@ -71,9 +73,9 @@
 // float
 
 @mixin float{
-  &-l{ float: left !important; };
-  &-r{ float: right !important; };
-  &-n{ float: none !important; };
+  &-left{ float: left !important; };
+  &-right{ float: right !important; };
+  &-none{ float: none !important; };
 }
 
 @mixin clearfix{
@@ -85,16 +87,16 @@
 }
 
 @mixin g-float {
-  .fl { @include float ;}
-  .fl-fix { @include clearfix ;}
+  .float { @include float ;}
+  .clearfix { @include clearfix ;}
 
   @each $key in $mediaList {
     @include rwd($key) {
       @at-root .#{$key}\:{
-        &fl {
+        &float {
           @include float;
         }    
-        &fl-fix{
+        &clearfix{
           @include clearfix;
         }
       }
@@ -105,18 +107,18 @@
 // textalign
 
 @mixin text {
-  &-l { text-align: left !important; }
-  &-c { text-align: center !important; }
-  &-r { text-align: right !important;}
+  &-left { text-align: left !important; }
+  &-center { text-align: center !important; }
+  &-right { text-align: right !important;}
 }
 
 @mixin g-text {
-  .txt { @include text ;}
+  .text { @include text ;}
 
   @each $key in $mediaList {
     @include rwd($key) {
       @at-root .#{$key}\:{
-        &txt {
+        &text {
           @include text;
         }    
       }

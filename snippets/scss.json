@@ -11,7 +11,7 @@
 	"generate @mixin rwd-md": {
 		"prefix": "rwd-md",
 		"body": [
-			"@include rwd(sm){",
+			"@include rwd(md){",
 			"  ",
 			"};"
 		],
@@ -20,7 +20,7 @@
 	"generate @mixin rwd-lg": {
 		"prefix": "rwd-lg",
 		"body": [
-			"@include rwd(sm){",
+			"@include rwd(lg){",
 			"  ",
 			"};"
 		],
@@ -29,7 +29,7 @@
 	"generate @mixin rwd-xl": {
 		"prefix": "rwd-xl",
 		"body": [
-			"@include rwd(sm){",
+			"@include rwd(xl){",
 			"  ",
 			"};"
 		],

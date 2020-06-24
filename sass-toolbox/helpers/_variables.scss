@@ -1,6 +1,20 @@
+//// important ////
 
-$mediaListPcFirst:xl,lg,md,sm;
-$mediaListMobileFirst:sm,md,lg,xl;
+$mediaFirst:mobile;
+// $mediaFirst:pc;
+
+$gridStyle: float;
+// $gridStyle: flex;
+
+//// important ////
+
+$mediaList:"";
+@if $mediaFirst == mobile { $mediaList:sm,md,lg,xl;} 
+@else { $mediaList:xl,lg,md,sm; }
+
+// grid system
+$columns: 12;
+$gutter: 20px;
 
 $rwd: (
     xl: (
@@ -24,6 +38,7 @@ $rwd: (
       fontSize:20px
       ),
 );
+
 
 
 

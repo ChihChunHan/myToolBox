@@ -11,5 +11,4 @@
 
 @function rwdGetMap($setPoint,$key) {
   @return map-get((map-get($rwd,$setPoint)),$key)
-}
-
+};

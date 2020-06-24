@@ -1,18 +1,18 @@
 
 // display
 @mixin display {
-  &-i{ display: inline !important; }
-  &-b{ display: block !important; }
-  &-i-b{ display: inline-block !important; }
-  &-f{ display: flex !important; }
-  &-n{ display: none !important; }
+  &-i{ display: inline; }
+  &-b{ display: block; }
+  &-i-b{ display: inline-block; }
+  &-f{ display: flex; }
+  &-n{ display: none; }
 }
 
 @mixin g-d {
   .d { 
     @include display ;
-    @each $key in $mediaListMobileFirst {
-      @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+    @each $key in $mediaList {
+      @include rwd($key) {
         @at-root .#{$key}\:{
           &d {
             @include display ;
@@ -56,8 +56,8 @@
   .a-i { @include align-items }
   .a-s { @include align-self }
 
-  @each $key in $mediaListMobileFirst {
-    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+  @each $key in $mediaList {
+    @include rwd($key) {
       @at-root .#{$key}\:{
         &f-d { @include flex-direction }
         &j-c { @include justify-content }
@@ -88,8 +88,8 @@
   .fl { @include float ;}
   .fl-fix { @include clearfix ;}
 
-  @each $key in $mediaListMobileFirst {
-    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+  @each $key in $mediaList {
+    @include rwd($key) {
       @at-root .#{$key}\:{
         &fl {
           @include float;
@@ -113,8 +113,8 @@
 @mixin g-text {
   .txt { @include text ;}
 
-  @each $key in $mediaListMobileFirst {
-    @media screen and (min-width:rwdGetMap($key,breakpoints)) {
+  @each $key in $mediaList {
+    @include rwd($key) {
       @at-root .#{$key}\:{
         &txt {
           @include text;

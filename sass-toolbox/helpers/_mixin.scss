@@ -4,6 +4,7 @@
   color: $c;
 }
 
+// nth-of-type
 @mixin nthType($nth) {
   @if $nth == 1 {
     &:first-of-type { @content; }
@@ -13,4 +14,19 @@
     &:nth-of-type(#{$nth}) { @content; }
   }
 }
+
+// rwd
+@mixin rwd($setpoint) {
+  @if $mediaFirst == mobile {
+    @media screen and (min-width: rwdGetMap($setpoint,breakpoints) ) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: rwdGetMap($setpoint,breakpoints) ) {
+      @content;
+    }
+  }
+};
+
+
 

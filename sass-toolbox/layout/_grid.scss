@@ -1,0 +1,81 @@
+
+// container
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+
+  // gridstyle float/flex
+  @if $gridStyle == float {  // float
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  } @else {  // flex
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // max-width rwd
+  @if $mediaFirst == mobile {  // mobile first
+    max-width: 100%; 
+
+    @for $i from 1 through 4 {
+      @include rwd(nth($mediaList,$i)){
+        max-width: rwdGetMap(nth($mediaList,$i),container);
+      }
+    }
+
+  } @else {   // pc first
+    max-width: rwdGetMap(xl, container); 
+
+    @for $i from 1 through 3 {
+      @include rwd(nth($mediaList,$i)){
+        max-width: rwdGetMap(nth($mediaList,$i+1),container);
+      }
+    }
+    @include rwd(sm) {
+      max-width: 100%;
+    }
+  }
+
+}
+
+// columns
+
+@mixin col($col) {
+  @if $gridStyle == float {  // float
+    width: calc( #{100% / $columns * $col} - #{$gutter} );
+  } @else {  // flex
+    flex-basis: calc( #{100% / $columns * $col} - #{$gutter} );
+  }
+  margin-left: $gutter / 2;
+  margin-right: $gutter / 2;
+
+  @if $gridStyle == float {  // float
+    float: left;
+  } 
+}
+
+@for $col from 1 through $columns {
+  .col-#{$col} {
+    @include col($col);
+  }
+}
+
+@each $key in $mediaList {
+  @include rwd($key) {
+    @for $col from 1 through $columns {
+      .#{$key}\:col-#{$col} {
+        @if $gridStyle == float {  // float
+          width: calc( #{100% / $columns * $col} - #{$gutter} );
+        } @else {  // flex
+          flex-basis: calc( #{100% / $columns * $col} - #{$gutter} );
+        }
+      }
+    }
+  }
+}

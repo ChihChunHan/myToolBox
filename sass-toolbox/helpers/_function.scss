@@ -13,6 +13,13 @@
   @return map-get((map-get($rwd,$setPoint)),$key)
 };
 
+
+// goldenRatio: n = ( n * 0.618 ) + ( n * 0.618 * 0.618 )
+@function goldenRatioCalc($value,$num){
+  @return $value * pow(1.618,$num - 1);
+}
+
+// math.power n*n*n
 @function pow($v,$t){
   @if $t == 0 { @return 1 }
 

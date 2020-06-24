@@ -1,0 +1,66 @@
+{
+	"generate @mixin rwd-sm": {
+		"prefix": "rwd-sm",
+		"body": [
+			"@include rwd(sm){",
+			"  ",
+			"};"
+		],
+		"description": "@mixin rwd-sm"
+	},
+	"generate @mixin rwd-md": {
+		"prefix": "rwd-md",
+		"body": [
+			"@include rwd(sm){",
+			"  ",
+			"};"
+		],
+		"description": "@mixin rwd-md"
+	},
+	"generate @mixin rwd-lg": {
+		"prefix": "rwd-lg",
+		"body": [
+			"@include rwd(sm){",
+			"  ",
+			"};"
+		],
+		"description": "@mixin rwd-lg"
+	},
+	"generate @mixin rwd-xl": {
+		"prefix": "rwd-xl",
+		"body": [
+			"@include rwd(sm){",
+			"  ",
+			"};"
+		],
+		"description": "@mixin rwd-xl"
+	},
+	"generate @mixin nthType": {
+		"prefix": "nth",
+		"body": [
+			"@include nth(1){",
+			"  ",
+			"};"
+		],
+		"description": "@mixin nthType"
+	},
+	"multi-bg-setting": {
+		"prefix": "bg-multiple",
+		"body": [
+			"background-image: url();",
+			"background-repeat: no-repeat;",
+			"background-size: contain;",
+			"background-position: 0 0;"
+		],
+		"description": "multi-bg-setting"
+	},
+	"basic-font-setting": {
+		"prefix": "font-size-wieght-color",
+		"body": [
+			"color: #fff;",
+			"font-size: 1rem;",
+			"font-weight: normal;"
+		],
+		"description": "basic-font-setting"
+	}
+}

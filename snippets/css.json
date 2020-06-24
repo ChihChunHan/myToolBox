@@ -1,0 +1,12 @@
+{
+	"multi-bg-setting": {
+		"prefix": "bg-multi",
+		"body": [
+			"background-image: url();",
+			"background-repeat: no-repeat;",
+			"background-size: contain;",
+			"background-position: 0 0;"
+		],
+		"description": "multi-bg-setting"
+	}
+}

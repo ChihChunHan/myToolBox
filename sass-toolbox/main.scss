@@ -4,13 +4,6 @@
 @import './helpers/variables';
 @import './helpers/function';
 @import './helpers/mixin';
-@import './helpers/utilitiesMobileFirst';
-// @import './helpers/utilitiesPcFirst';
-@import './helpers/rwdMoblieFirst';
-// @import './helpers/rwdPcFirst';
+@import './helpers/utilities';
 
-@import './layout/gridFloatMobileFirst';
-// @import './layout/gridFloatPcFirst';
-// @import './layout/gridFlexMobileFirst';
-// @import './layout/gridFlexPcFirst';
-
+@import './layout/grid';

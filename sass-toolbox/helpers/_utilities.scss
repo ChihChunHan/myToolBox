@@ -124,6 +124,26 @@
   }
 }
 
+// max-width
+
+@mixin max-width{
+  &-n { max-width: none; };
+  &-100 { max-width: 100% } ;
+  &-90 { max-width: 90% } ;
+}
+
+@mixin g-max-w {
+  .max-w { @include max-width ;}
+
+  @each $key in $mediaList {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &max-w { @include max-width ;}
+      }
+    }
+  }
+}
+
 // @include
 
 // display
@@ -137,3 +157,6 @@
 
 // text-align
 @include g-text;
+
+// max-width
+@include g-max-w;

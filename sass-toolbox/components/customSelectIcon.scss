@@ -1,0 +1,10 @@
+
+@mixin select ($bgSize:35px,$bgImg:url()) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;       /* Remove default arrow */
+  background-image: $bgImg;   /* Add custom arrow */
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  background-size: $bgSize;
+}

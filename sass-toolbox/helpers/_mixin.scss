@@ -5,7 +5,7 @@
 }
 
 // nth-of-type
-@mixin nthType($nth) {
+@mixin nth($nth) {
   @if $nth == 1 {
     &:first-of-type { @content; }
   } @else if $nth == -1 {

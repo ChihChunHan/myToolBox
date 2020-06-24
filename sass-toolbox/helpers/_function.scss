@@ -15,8 +15,8 @@
 
 
 // goldenRatio: n = ( n * 0.618 ) + ( n * 0.618 * 0.618 )
-@function goldenRatioCalc($value,$num){
-  @return $value * pow(1.618,$num - 1);
+@function goldenRatioCalc($value,$level){
+  @return $value * pow(1.618,$level - 1);
 }
 
 // math.power n*n*n

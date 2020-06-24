@@ -4,6 +4,8 @@
   color: $c;
 }
 
+//// css selector ////
+
 // nth-of-type
 @mixin nth($nth) {
   @if $nth == 1 {
@@ -15,7 +17,10 @@
   }
 }
 
-// rwd
+
+//// rwd ////
+
+// rwd breakpoints
 @mixin rwd($setpoint) {
   @if $mediaFirst == mobile {
     @media screen and (min-width: rwdGetMap($setpoint,breakpoints) ) {
@@ -26,6 +31,48 @@
       @content;
     }
   }
+};
+
+
+//// margin & padding ////
+
+// margin & padding maxin
+@mixin margin($direction,$level,$length:1rem) {
+  @include marginAndPaddingGenerator($direction,$level,$length,'margin')
+}
+@mixin padding($direction,$level,$length:1rem) {
+  @include marginAndPaddingGenerator($direction,$level,$length,'padding')
+}
+
+// margin & padding css generator
+@mixin marginAndPaddingGenerator($direction,$level,$length,$style){
+  @if $direction == x {
+    #{$style}-left: switchValue($level,$length);
+    #{$style}-right: switchValue($level,$length);
+
+  } @else if $direction == y {
+    #{$style}-top: switchValue($level,$length);
+    #{$style}-bottom: switchValue($level,$length);
+    
+  } @else {
+    #{styleAndDirection($style,$direction)}: switchValue($level,$length);
+  }
+};
+
+// deal with style string
+@function addDash($direction){
+  @if $direction != ""{ @return -$direction;}
+  @else { @return "";}
+}
+@function styleAndDirection ($style,$direction:"") {
+  @return #{$style}#{addDash($direction)};
+}
+
+// deal with style value
+@function switchValue($level,$length:1rem){
+  @if $level == 0 { @return 0; }
+  @else if $level == auto { @return auto; }
+  @else { @return goldenRatioCalc($length,$level); }
 };
 
 

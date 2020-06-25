@@ -2,7 +2,7 @@
 // display
 @mixin display {
   &-inline{ display: inline; }
-  &-blick{ display: block; }
+  &-block{ display: block; }
   &-inline-block{ display: inline-block; }
   &-flex{ display: flex; }
   &-none{ display: none; }

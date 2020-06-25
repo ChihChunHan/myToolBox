@@ -37,11 +37,11 @@
 //// margin & padding ////
 
 // margin & padding maxin
-@mixin margin($direction,$level,$length:1rem) {
-  @include marginAndPaddingGenerator($direction,$level,$length,'margin')
+@mixin margin($direction,$level) {
+  @include marginAndPaddingGenerator($direction,$level,$spacing,'margin')
 }
-@mixin padding($direction,$level,$length:1rem) {
-  @include marginAndPaddingGenerator($direction,$level,$length,'padding')
+@mixin padding($direction,$level) {
+  @include marginAndPaddingGenerator($direction,$level,$spacing,'padding')
 }
 
 // margin & padding css generator

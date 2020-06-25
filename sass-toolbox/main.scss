@@ -1,4 +1,4 @@
-@import './base/reset';
+// @import './base/reset';
 @import './base/typography';
 
 @import './helpers/variables';
@@ -6,4 +6,36 @@
 @import './helpers/mixin';
 @import './helpers/utilities';
 
-@import './layout/grid';
+// @import './layout/grid';
+
+
+
+
+
+// @debug goldenRatioCalc(1px,3);
+
+.box{
+  width: 100%;
+  border: 1px solid #000;
+
+  
+  .inner{
+    @include margin(x,auto);
+    @include margin(y,1);
+    box-sizing: border-box;
+    height: 100px;
+    width: 100px;
+    border: 1px solid #000;
+    background-color: pink;
+    @for $i from 1 to 9 {
+      $j: 8 - $i + 1;
+      @include nth($i){
+        
+        // @include m($i)
+        
+      }
+    }
+  }
+}
+
+

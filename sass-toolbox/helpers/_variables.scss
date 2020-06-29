@@ -13,7 +13,7 @@ $mediaList:"";
 @else { $mediaList:xl,lg,md,sm; }
 
 // margin & padding spacing length
-$spacing: 1rem;
+$spacing: 10px;
 
 // grid system
 $columns: 12;
@@ -23,7 +23,7 @@ $rwd: (
     xl: (
       breakpoints:1440px,
       container:1440px,
-      fontSize:22px
+      fontSize:20px
       ),
     lg: (
       breakpoints:960px,
@@ -33,7 +33,7 @@ $rwd: (
     md: (
       breakpoints:768px,
       container:768px,
-      fontSize:18px
+      fontSize:16px
       ),
     sm: (
       breakpoints:480px,

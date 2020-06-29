@@ -76,19 +76,17 @@
   &-left{ float: left !important; };
   &-right{ float: right !important; };
   &-none{ float: none !important; };
-}
-
-@mixin clearfix{
-  &::after{
-    content: "";
-    display: block;
-    clear: both;
-  }
+  &-fix {
+    &::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+  };
 }
 
 @mixin g-float {
   .float { @include float ;}
-  .clearfix { @include clearfix ;}
 
   @each $key in $mediaList {
     @include rwd($key) {
@@ -96,9 +94,6 @@
         &float {
           @include float;
         }    
-        &clearfix{
-          @include clearfix;
-        }
       }
     }
   }

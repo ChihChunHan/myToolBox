@@ -23,11 +23,11 @@
 // rwd breakpoints
 @mixin rwd($setpoint) {
   @if $mediaFirst == mobile {
-    @media screen and (min-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (min-width: rwdGetMap($setpoint,breakpoints) ) {
       @content;
     }
   } @else {
-    @media screen and (max-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (max-width: rwdGetMap($setpoint,breakpoints) ) {
       @content;
     }
   }
@@ -69,11 +69,10 @@
 }
 
 // deal with style value
-@function switchValue($level,$length:1rem){
+@function switchValue($level,$length){
   @if $level == 0 { @return 0; }
   @else if $level == auto { @return auto; }
-  @else { @return goldenRatioCalc($length,$level); }
+  @else { @return $length * $level; }
 };
-
 
 

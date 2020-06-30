@@ -4,9 +4,7 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: $gutter / 2;
-  padding-right: $gutter / 2;
-
+  
   // gridstyle float/flex
   @if $gridStyle == float {  // float
     &::after {

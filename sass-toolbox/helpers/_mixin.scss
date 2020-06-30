@@ -1,7 +1,6 @@
-@mixin fontZWC($z,$w,$c) {
+@mixin font($z,$w) {
   font-size: $z;
   font-weight: $w;
-  color: $c;
 }
 
 //// css selector ////

@@ -1,6 +1,6 @@
 @mixin font($z,$w) {
   font-size: $z;
-  font-weight: $w;
+  font-weight: $w * 100;
 }
 
 //// css selector ////

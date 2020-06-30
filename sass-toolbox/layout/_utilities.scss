@@ -59,8 +59,8 @@
 }
 
 @mixin order {
-  &-first { order: 9999; }
-  &-last { order: -9999; }
+  &-first { order: -9999; }
+  &-last { order: 9999; }
   &-none { order: 0; }
   @for $i from 1 to 12 {
     &-#{$i} { order: $i; }

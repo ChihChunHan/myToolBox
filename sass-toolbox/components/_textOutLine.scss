@@ -1,5 +1,5 @@
 // text out-line
-@mixin txtOL($length,$color:#fff){
+@mixin textOutLine($length,$color:#fff){
   text-shadow: 
   0px #{$length} 0px $color,
   #{$length} 0px 0px $color,

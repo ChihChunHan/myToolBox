@@ -1,11 +1,11 @@
-html{
-  font-size: rwdGetMap(nth($mediaList,1),fontSize);
-  @for $i from 2 through 4 {
-    @include rwd(nth($mediaList,$i)){
-      font-size: rwdGetMap(nth($mediaList,$i),fontSize);
-    };
-  }
-}
+// html{
+//   font-size: rwdGetMap(nth($mediaList,1),fontSize);
+//   @for $i from 2 through 4 {
+//     @include rwd(nth($mediaList,$i)){
+//       font-size: rwdGetMap(nth($mediaList,$i),fontSize);
+//     };
+//   }
+// }
 
 h1, h2, h3, h4, h5, h6, p, small, span,
 li, th, td,

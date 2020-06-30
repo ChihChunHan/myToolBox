@@ -52,19 +52,42 @@
   &-stretch { align-self: stretch !important; }
 }
 
+@mixin flex-wrap {
+  &-no-wrap { flex-wrap: nowrap; }
+  &-wrap { flex-wrap: wrap; }
+  &-wrap-reverse { flex-wrap: wrap-reverse; }
+}
+
+@mixin order {
+  &-first { order: 9999; }
+  &-last { order: -9999; }
+  &-none { order: 0; }
+  @for $i from 1 to 12 {
+    &-#{$i} { order: $i; }
+  }
+}
+
 @mixin g-flex {
-  .flex { @include flex-direction }
+  .flex { 
+    @include flex-direction;
+    @include flex-wrap;
+  }
   .justify { @include justify-content }
   .items { @include align-items }
   .self { @include align-self }
+  .order { @include order }
 
   @each $key in $mediaList {
     @include rwd($key) {
       @at-root .#{$key}\:{
-        &flex { @include flex-direction }
+        &flex { 
+          @include flex-direction;
+          @include flex-wrap;
+        }
         &justify { @include justify-content }
         &items { @include align-items }
         &self { @include align-self }
+        &order { @include order }
       }
     }
   }

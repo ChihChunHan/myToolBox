@@ -23,7 +23,7 @@
   }
 }
 
-// flex 
+// flex
 
 @mixin flex-direction {
   &-row { flex-direction: row !important; }
@@ -71,6 +71,7 @@
   .flex { 
     @include flex-direction;
     @include flex-wrap;
+    &-center-center { @include flex-center-center;}
   }
   .justify { @include justify-content }
   .items { @include align-items }
@@ -83,6 +84,7 @@
         &flex { 
           @include flex-direction;
           @include flex-wrap;
+          &-center-center { @include flex-center-center;}
         }
         &justify { @include justify-content }
         &items { @include align-items }

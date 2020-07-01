@@ -1,5 +1,6 @@
-@mixin font($z:1rem,$w:4) {
-  font-size: $z;
+@mixin font($z:1,$w:4) {
+  @if (empty(unit($z))) { font-size: #{$z}rem; } 
+  @else { font-size: $z; }
   font-weight: $w * 100;
 }
 
@@ -13,6 +14,8 @@
   justify-content: center;
   align-items: center;
 }
+
+
 
 //// css selector ////
 

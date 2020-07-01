@@ -164,6 +164,26 @@
   }
 }
 
+// size
+@mixin size-100($str) {
+  &-100 { #{$str}: 100%; }
+}
+
+@mixin g-size {
+  .h { @include size-100(height) }
+  .w { @include size-100(width) }
+
+  @each $key in $mediaList {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &h { @include size-100(height) }
+        &w { @include size-100(width) }
+      }
+    }
+  }
+}
+
+
 // @include
 
 // display
@@ -180,3 +200,6 @@
 
 // max-width
 @include g-max-w;
+
+// size
+@include g-size;

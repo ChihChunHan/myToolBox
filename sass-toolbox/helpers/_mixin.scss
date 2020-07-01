@@ -1,6 +1,11 @@
-@mixin font($z,$w) {
+@mixin font($z:1rem,$w:4) {
   font-size: $z;
   font-weight: $w * 100;
+}
+
+@mixin size($width,$height:$width) {
+  width: $width;
+  height: $height;
 }
 
 //// css selector ////
@@ -15,6 +20,7 @@
     &:nth-of-type(#{$nth}) { @content; }
   }
 }
+
 
 
 //// rwd ////

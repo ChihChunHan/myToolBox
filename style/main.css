@@ -162,6 +162,11 @@ button, a, option, label {
 .flex-wrap-reverse {
   flex-wrap: wrap-reverse;
 }
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .justify-start {
   justify-content: flex-start !important;
@@ -270,6 +275,11 @@ button, a, option, label {
   .sm\:flex-wrap-reverse {
     flex-wrap: wrap-reverse;
   }
+  .sm\:flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .sm\:justify-start {
     justify-content: flex-start !important;
   }
@@ -373,6 +383,11 @@ button, a, option, label {
   }
   .md\:flex-wrap-reverse {
     flex-wrap: wrap-reverse;
+  }
+  .md\:flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .md\:justify-start {
     justify-content: flex-start !important;
@@ -478,6 +493,11 @@ button, a, option, label {
   .lg\:flex-wrap-reverse {
     flex-wrap: wrap-reverse;
   }
+  .lg\:flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .lg\:justify-start {
     justify-content: flex-start !important;
   }
@@ -581,6 +601,11 @@ button, a, option, label {
   }
   .xl\:flex-wrap-reverse {
     flex-wrap: wrap-reverse;
+  }
+  .xl\:flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .xl\:justify-start {
     justify-content: flex-start !important;

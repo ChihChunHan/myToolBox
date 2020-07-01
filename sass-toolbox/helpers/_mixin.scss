@@ -50,12 +50,13 @@
 
 //// margin & padding ////
 
-// margin & padding maxin
 @mixin margin($direction,$level) {
-  @include marginAndPaddingGenerator($direction,$level,$spacing,'margin')
+  @if (empty(unit($level))) { @include marginAndPaddingGenerator($direction,$level,$spacing,'margin')} 
+  @else { @include marginAndPaddingGenerator($direction,1,$level,'margin') }
 }
 @mixin padding($direction,$level) {
-  @include marginAndPaddingGenerator($direction,$level,$spacing,'padding')
+  @if (empty(unit($level))) { @include marginAndPaddingGenerator($direction,$level,$spacing,'padding')} 
+  @else { @include marginAndPaddingGenerator($direction,1,$level,'padding') }
 }
 
 // margin & padding css generator

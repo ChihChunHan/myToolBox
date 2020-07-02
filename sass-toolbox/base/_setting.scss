@@ -1,0 +1,43 @@
+//// important ////
+
+$media_first:mobile;
+// $media_first:pc;
+
+$grid_style: float;
+// $grid_style: flex;
+
+//// important ////
+
+$media_list:"";
+@if $media_list == mobile { $media_list:sm,md,lg,xl;} 
+@else { $media_list:xl,lg,md,sm; }
+
+// margin & padding spacing length
+$spacing: 20px;
+
+// grid system
+$columns: 12;
+$gutter: 20px;
+
+$rwd: (
+    xl: (
+      breakpoints:1440px,
+      container:1440px,
+      fontSize:20px
+      ),
+    lg: (
+      breakpoints:960px,
+      container:960px,
+      fontSize:20px
+      ),
+    md: (
+      breakpoints:768px,
+      container:768px,
+      fontSize:16px
+      ),
+    sm: (
+      breakpoints:480px,
+      container:480px,
+      fontSize:16px
+      ),
+);

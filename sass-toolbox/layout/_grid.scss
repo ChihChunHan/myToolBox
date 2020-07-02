@@ -23,16 +23,16 @@
 
     @for $i from 1 through 4 {
       @include rwd(nth($media_list,$i)){
-        max-width: rwdGetMap(nth($media_list,$i),container);
+        max-width: rwd_get_map(nth($media_list,$i),container);
       }
     }
 
   } @else {   // pc first
-    max-width: rwdGetMap(xl, container); 
+    max-width: rwd_get_map(xl, container); 
 
     @for $i from 1 through 3 {
       @include rwd(nth($media_list,$i)){
-        max-width: rwdGetMap(nth($media_list,$i+1),container);
+        max-width: rwd_get_map(nth($media_list,$i+1),container);
       }
     }
     @include rwd(sm) {

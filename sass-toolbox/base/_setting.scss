@@ -9,7 +9,7 @@ $grid_style: float;
 //// important ////
 
 $media_list:"";
-@if $media_list == mobile { $media_list:sm,md,lg,xl;} 
+@if $media_first == mobile { $media_list:sm,md,lg,xl;} 
 @else { $media_list:xl,lg,md,sm; }
 
 // margin & padding spacing length

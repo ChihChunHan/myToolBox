@@ -38,11 +38,11 @@
 // rwd breakpoints
 @mixin rwd($setpoint) {
   @if $media_first == mobile {
-    @media (min-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (min-width: rwd_get_map($setpoint,breakpoints) ) {
       @content;
     }
   } @else {
-    @media (max-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (max-width: rwd_get_map($setpoint,breakpoints) ) {
       @content;
     }
   }

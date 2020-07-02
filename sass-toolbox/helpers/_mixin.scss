@@ -51,44 +51,44 @@
 
 //// margin & padding ////
 
-@mixin margin($direction,$level) {
-  @if (empty(unit($level))) { @include margin_and_padding_generator($direction,$level,$spacing,'margin')} 
-  @else { @include margin_and_padding_generator($direction,1,$level,'margin') }
+@mixin margin($direction,$value) {
+  @include m_p_generator($direction,$value,$spacing,'margin')
 }
-@mixin padding($direction,$level) {
-  @if (empty(unit($level))) { @include margin_and_padding_generator($direction,$level,$spacing,'padding')} 
-  @else { @include margin_and_padding_generator($direction,1,$level,'padding') }
+@mixin padding($direction,$value) {
+  @include m_p_generator($direction,$value,$spacing,'padding')
 }
 
 // margin & padding css generator
-@mixin margin_and_padding_generator($direction,$level,$length,$style){
+@mixin m_p_generator($direction,$value,$spacing,$style){
   @if $direction == x {
-    #{$style}-left: switch_value($level,$length);
-    #{$style}-right: switch_value($level,$length);
+    #{$style}-left: calc_value($value,$spacing);
+    #{$style}-right: calc_value($value,$spacing);
 
   } @else if $direction == y {
-    #{$style}-top: switch_value($level,$length);
-    #{$style}-bottom: switch_value($level,$length);
+    #{$style}-top: calc_value($value,$spacing);
+    #{$style}-bottom: calc_value($value,$spacing);
     
   } @else {
-    #{style_and_direction($style,$direction)}: switch_value($level,$length);
+    #{style_and_direction($style,$direction)}: calc_value($value,$spacing);
   }
 };
 
 // deal with style string
+@function style_and_direction ($style,$direction:"") {
+  @return #{$style}#{add_dash($direction)};
+};
 @function add_dash($direction){
   @if $direction != ""{ @return -$direction;}
   @else { @return "";}
-}
-@function style_and_direction ($style,$direction:"") {
-  @return #{$style}#{add_dash($direction)};
-}
+};
+
 
 // deal with style value
-@function switch_value($level,$length){
-  @if $level == 0 { @return 0; }
-  @else if $level == auto { @return auto; }
-  @else { @return $length * $level; }
+@function calc_value($value,$spacing){
+  @if $value == 0 { @return 0; }
+  @else if $value == auto { @return auto; }
+  @else if empty(unit($value)) { @return $spacing * $value; }
+  @else { @return $value; }
 };
 
 

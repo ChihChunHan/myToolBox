@@ -26,30 +26,30 @@
 // flex
 
 @mixin flex-direction {
-  &-row { flex-direction: row !important; }
-  &-row-reverse { flex-direction: row-reverse !important; }
-  &-col { flex-direction: column !important; }
-  &-col-reverse { flex-direction: column-reverse !important; }
+  &-row { flex-direction: row; }
+  &-row-reverse { flex-direction: row-reverse; }
+  &-col { flex-direction: column; }
+  &-col-reverse { flex-direction: column-reverse; }
 }
 @mixin justify-content {
-  &-start { justify-content: flex-start !important; }
-  &-center { justify-content: center !important; }
-  &-end { justify-content: flex-end !important; }
-  &-between { justify-content: space-between !important; }
-  &-around { justify-content: space-around !important; }
+  &-start { justify-content: flex-start; }
+  &-center { justify-content: center; }
+  &-end { justify-content: flex-end; }
+  &-between { justify-content: space-between; }
+  &-around { justify-content: space-around; }
 }
 @mixin align-items {
-  &-start { align-items: flex-start !important; }
-  &-center { align-items: center !important; }
-  &-end { align-items: flex-end !important; }
-  &-stretch { align-items: stretch !important; }
+  &-start { align-items: flex-start; }
+  &-center { align-items: center; }
+  &-end { align-items: flex-end; }
+  &-stretch { align-items: stretch; }
 }
 
 @mixin align-self {
-  &-start { align-self: flex-start !important; }
-  &-center { align-self: center !important; }
-  &-end { align-self: flex-end !important; }
-  &-stretch { align-self: stretch !important; }
+  &-start { align-self: flex-start; }
+  &-center { align-self: center; }
+  &-end { align-self: flex-end; }
+  &-stretch { align-self: stretch; }
 }
 
 @mixin flex-wrap {
@@ -98,9 +98,9 @@
 // float
 
 @mixin float{
-  &-left{ float: left !important; };
-  &-right{ float: right !important; };
-  &-none{ float: none !important; };
+  &-left{ float: left; };
+  &-right{ float: right; };
+  &-none{ float: none; };
   &-fix {
     &::after{
       content: "";
@@ -127,9 +127,9 @@
 // textalign
 
 @mixin text {
-  &-left { text-align: left !important; }
-  &-center { text-align: center !important; }
-  &-right { text-align: right !important;}
+  &-left { text-align: left; }
+  &-center { text-align: center; }
+  &-right { text-align: right;}
 }
 
 @mixin g-text {
@@ -185,6 +185,37 @@
   }
 }
 
+// margin & padding
+@mixin margin-($string) {
+  &-0 { @include margin($string,0); };
+  &-1 { @include margin($string,0.25); };
+  &-2 { @include margin($string,0.5); };
+  &-3 { @include margin($string,1); };
+  &-4 { @include margin($string,1.5); };
+  &-5 { @include margin($string,3); };
+  &-auto { @include margin($string,auto); };
+}
+
+@mixin margin_style {
+  @include margin-("");
+  &t { @include margin-(top); }
+  &r { @include margin-(right); }
+  &b { @include margin-(bottom); }
+  &l { @include margin-(left); }
+  &x { @include margin-(x); }
+  &y { @include margin-(y); }
+}
+
+@mixin g-m {
+  .m { @include margin_style() }
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &m { @include margin_style() }
+      }
+    }
+  }
+}
 
 // @include
 
@@ -205,3 +236,6 @@
 
 // size
 @include g-size;
+
+// margin 
+@include g-m;

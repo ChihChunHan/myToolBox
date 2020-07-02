@@ -1,16 +1,16 @@
 //// important ////
 
-$mediaFirst:mobile;
-// $mediaFirst:pc;
+$media_first:mobile;
+// $media_first:pc;
 
-$gridStyle: float;
-// $gridStyle: flex;
+$grid_style: float;
+// $grid_style: flex;
 
 //// important ////
 
-$mediaList:"";
-@if $mediaFirst == mobile { $mediaList:sm,md,lg,xl;} 
-@else { $mediaList:xl,lg,md,sm; }
+$media_list:"";
+@if $media_list == mobile { $media_list:sm,md,lg,xl;} 
+@else { $media_list:xl,lg,md,sm; }
 
 // margin & padding spacing length
 $spacing: 10px;

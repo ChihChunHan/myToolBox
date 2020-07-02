@@ -11,7 +11,7 @@
 @mixin g-d {
   .d { 
     @include display ;
-    @each $key in $mediaList {
+    @each $key in $media_list {
       @include rwd($key) {
         @at-root .#{$key}\:{
           &d {
@@ -78,7 +78,7 @@
   .self { @include align-self }
   .order { @include order }
 
-  @each $key in $mediaList {
+  @each $key in $media_list {
     @include rwd($key) {
       @at-root .#{$key}\:{
         &flex { 
@@ -113,7 +113,7 @@
 @mixin g-float {
   .float { @include float ;}
 
-  @each $key in $mediaList {
+  @each $key in $media_list {
     @include rwd($key) {
       @at-root .#{$key}\:{
         &float {
@@ -135,7 +135,7 @@
 @mixin g-text {
   .text { @include text ;}
 
-  @each $key in $mediaList {
+  @each $key in $media_list {
     @include rwd($key) {
       @at-root .#{$key}\:{
         &text {
@@ -157,7 +157,7 @@
 @mixin g-max-w {
   .max-w { @include max-width ;}
 
-  @each $key in $mediaList {
+  @each $key in $media_list {
     @include rwd($key) {
       @at-root .#{$key}\:{
         &max-w { @include max-width ;}
@@ -175,7 +175,7 @@
   .h { @include size-100(height) }
   .w { @include size-100(width) }
 
-  @each $key in $mediaList {
+  @each $key in $media_list {
     @include rwd($key) {
       @at-root .#{$key}\:{
         &h { @include size-100(height) }

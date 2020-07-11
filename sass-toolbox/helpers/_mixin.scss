@@ -130,18 +130,16 @@
 
 @mixin apply($utilities){  // float-left
   @each $utility in $utilities {
-    $list: str-slice-by-dash($utility);
-    #{call(nth($list, 1))}: #{call(nth($list, 2))};
+    @include utility($utility)
   }
 };
 
 // utilities handler
 
-// @function utility-handler($utility){
-//   $list: str-to-list($utility);
-//   $re: call(nth($list, 1)) + ":" + call(nth($list, 2));
-//   @return $re
-// };
+@mixin utility($utility){
+  $list: str-slice-by-dash($utility);
+  #{call(nth($list, 1))}: #{call(nth($list, 2))};
+};
 
 // utilities string handler
 

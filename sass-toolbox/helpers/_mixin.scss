@@ -50,16 +50,28 @@
 
 //// margin & padding ////
 
+
+
 // @if empty(unit($value)) {  };
 @mixin margin($string,$value) {
   $data : setting_date($string,$value,"margin");
   @include generator-style($data)
-}
+};
 
 @mixin padding($string,$value) {
   $data : setting_date($string,$value,"padding");
   @include generator-style($data)
+};
+
+@mixin generator-style($data){
+  @each $direction in map-get($data,direction) {
+    #{map-get($data,type)+$direction}:map-get($data,length);
+  }
 }
+
+
+
+
 
 @function setting_date($string,$value,$type){
   @return (
@@ -67,14 +79,19 @@
     length:value_handler($value,$spacing),
     type:$type
   )
-}
+};
+
+
 
 @function value_handler($value,$spacing){
   @if $value == 0 { @return 0; }
   @if $value == auto { @return auto; }
   @if empty(unit($value)) == false { @return $value; }
   @if empty(unit($value)) { @return $spacing * $value; }
-}
+};
+
+
+
 
 @function string_handler($string) {
   $direc_list:"";
@@ -84,8 +101,85 @@
   @return $direc_list
 };
 
-@mixin generator-style($data){
-  @each $direction in map-get($data,direction) {
-    #{map-get($data,type)+$direction}:map-get($data,length);
-  }
+
+
+
+
+
+
+
+@function test($var) {
+  @return call($var);
 }
+
+
+@function style(){
+  @return margin
+};
+
+@function value(){
+  @return "20px"
+};
+
+@function get-style(){
+  $list : style(), value();
+  @return $list
+};
+
+// refs tailwinds @apply
+
+@mixin apply($utilities){  // float-left
+  @each $utility in $utilities {
+    $list: str-slice-by-dash($utility);
+    #{call(nth($list, 1))}: #{call(nth($list, 2))};
+  }
+};
+
+// utilities handler
+
+// @function utility-handler($utility){
+//   $list: str-to-list($utility);
+//   $re: call(nth($list, 1)) + ":" + call(nth($list, 2));
+//   @return $re
+// };
+
+// utilities string handler
+
+@function str-slice-by-dash($str){
+  $list:();
+  @while get-dash($str) != null {
+    $list:append($list, get-first-str($str) );
+    $str:get-rest-str($str);
+  }
+  $list:append($list, $str);
+  @return $list
+};
+
+@function get-dash($str){
+  @return str-index($str,"-")
+};
+
+@function get-first-str($str){
+  @return str-slice($str, 1, (get-dash($str) - 1) )
+};
+
+@function get-rest-str($str){
+  @return str-slice($str, (get-dash($str) + 1) )
+};
+
+
+// utilities
+
+@function float(){
+  @return float
+};
+
+@function left(){
+  @return left
+};
+
+@function right(){
+  @return right
+};
+
+

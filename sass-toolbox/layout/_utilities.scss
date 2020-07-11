@@ -1,11 +1,142 @@
+// refs tailwinds @apply
 
-// display
+@mixin apply($utilities_list){  // float-left
+  
+  @each $utility in $utilities_list {
+  
+    @include utility($utility)
+  }
+};
+
+// utilities handler
+
+@mixin utility($utility){
+  $list: str-slice-by-dash($utility);
+  $style:utility-handler($list);
+  #{map-get($style,prop)}:#{map-get($style,value)};
+};
+
+// utilities string handler
+
+@function str-slice-by-dash($str){
+  $list:();
+  @while get-dash($str) != null {
+    $list:append($list, get-first-str($str) );
+    $str:get-rest-str($str);
+  }
+  $list:append($list, $str);
+  @return $list
+};
+
+@function get-dash($str){
+  @return str-index($str,"-")
+};
+
+@function get-first-str($str){
+  @return str-slice($str, 1, (get-dash($str) - 1) )
+};
+
+@function get-rest-str($str){
+  @return str-slice($str, (get-dash($str) + 1) )
+};
+
+
+// utilities
+
+@function utility-handler($list){
+  $style:$utilities;
+  @for $i from 1 through length($list) {
+    $style:map-get($style,nth($list,$i))
+  }
+  @return $style
+};
+
+$utilities:(
+  d:(
+    inline : (
+      prop:"display",
+      value:"inline",
+      block : (
+        prop:"display",
+        value:"inline-block"
+      ),
+    ),
+    block : (
+      prop:"display",
+      value:"block"
+    ),
+
+    flex : (
+      prop:"display",
+      value:"flex"
+    ),
+    none : (
+      prop:"display",
+      value:"none"
+    ),
+  ),
+  float:(
+    left : (
+      prop:"float",
+      value:"left"
+    ),
+    right : (
+      prop:"float",
+      value:"right"
+    ),
+    none : (
+      prop:"float",
+      value:"none"
+    ),
+  ),
+);
+
+@function left(){
+  @return left
+};
+
+@function right(){
+  @return right
+};
+
+@function none(){
+  @return none
+};
+
+@function inline(){
+  @return inline
+};
+
+@function block(){
+  @return block
+};
+
+@function inline-block(){
+  @return inline-block
+};
+
+// @function flex(){
+//   @return flex
+// };
+
+@function none(){
+  @return none
+};
+
+@function col(){
+  @return column
+};
+
+@function row(){
+  @return row
+};
+
 @mixin display {
-  &-inline{ display: inline; }
-  &-block{ display: block; }
-  &-inline-block{ display: inline-block; }
-  &-flex{ display: flex; }
-  &-none{ display: none; }
+  &-inline{ @include utility(d-inline) }
+  &-block{ @include utility(d-block) }
+  &-inline-block{ @include utility(d-inline-block) }
+  &-flex{ @include utility(d-flex) }
+  &-none{ @include utility(d-none) }
 }
 
 @mixin g-d {
@@ -26,7 +157,7 @@
 // flex
 
 @mixin flex-direction {
-  &-row { flex-direction: row; }
+  &-row { @include utility(flex-row) }
   &-row-reverse { flex-direction: row-reverse; }
   &-col { flex-direction: column; }
   &-col-reverse { flex-direction: column-reverse; }
@@ -98,9 +229,9 @@
 // float
 
 @mixin float{
-  &-left{ float: left; };
-  &-right{ float: right; };
-  &-none{ float: none; };
+  &-left{ @include utility(float-left) };
+  &-right{ @include utility(float-right) };
+  &-none{ @include utility(float-none) };
   &-fix {
     &::after{
       content: "";
@@ -124,7 +255,7 @@
   }
 }
 
-// textalign
+// text align
 
 @mixin text {
   &-left { text-align: left; }
@@ -186,56 +317,56 @@
 }
 
 // margin & padding
-@mixin margin-($string) {
-  &-0 { @include margin($string,0); };
-  &-1 { @include margin($string,0.25); };
-  &-2 { @include margin($string,0.5); };
-  &-3 { @include margin($string,1); };
-  &-4 { @include margin($string,1.5); };
-  &-5 { @include margin($string,3); };
-  &-auto { @include margin($string,auto); };
-}
+// @mixin margin-($string) {
+//   &-0 { @include margin($string,0); };
+//   &-1 { @include margin($string,0.25); };
+//   &-2 { @include margin($string,0.5); };
+//   &-3 { @include margin($string,1); };
+//   &-4 { @include margin($string,1.5); };
+//   &-5 { @include margin($string,3); };
+//   &-auto { @include margin($string,auto); };
+// }
 
-@mixin margin_style {
-  @include margin-("");
-  &t { @include margin-(top); }
-  &r { @include margin-(right); }
-  &b { @include margin-(bottom); }
-  &l { @include margin-(left); }
-  &x { @include margin-(x); }
-  &y { @include margin-(y); }
-}
+// @mixin margin_style {
+//   @include margin-("");
+//   &t { @include margin-(top); }
+//   &r { @include margin-(right); }
+//   &b { @include margin-(bottom); }
+//   &l { @include margin-(left); }
+//   &x { @include margin-(x); }
+//   &y { @include margin-(y); }
+// }
 
-@mixin g-m {
-  .m { @include margin_style() }
-  @each $key in $media_list {
-    @include rwd($key) {
-      @at-root .#{$key}\:{
-        &m { @include margin_style() }
-      }
-    }
-  }
-}
+// @mixin g-m {
+//   .m { @include margin_style() }
+//   @each $key in $media_list {
+//     @include rwd($key) {
+//       @at-root .#{$key}\:{
+//         &m { @include margin_style() }
+//       }
+//     }
+//   }
+// }
 
 // @include
 
 // display
-@include g-d;
+// @include g-d
 
-// flex
-@include g-flex; 
+// // flex
+// @include g-flex; 
 
-// float
-@include g-float;
+// // float
+// @include g-float;
 
-// text-align
-@include g-text;
+// // text-align
+// @include g-text;
 
-// max-width
-@include g-max-w;
+// // max-width
+// @include g-max-w;
 
-// size
-@include g-size;
+// // size
+// @include g-size;
 
-// margin 
-@include g-m;
+// // margin 
+// @include g-m;

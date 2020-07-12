@@ -51,21 +51,43 @@
   @return $style
 };
 
+
+
+@function set_map_key($key,$val){
+  $map : ( 
+    $key:( $val )
+  );
+  @return $map
+};
+
+// @function set_map2($prop,$value,$map){
+//   @return (prop:$prop,value:$value,$map)
+// };
+
+@function set_map($prop,$value){
+  @return (prop:$prop,value:$value)
+};
+
+$test:set_map_key( inline , set_map(display, inline) );
+
+
+@debug $test;
+@debug map-get($test, inline );
+
 $utilities:(
   d:(
     inline : (
-      prop:"display",
-      value:"inline",
       block : (
-        prop:"display",
-        value:"inline-block"
+        // prop:"display",
+        // value:"inline-block"
+        set_map(display, inline-block)
       ),
+      // set_value(display, inline)
     ),
     block : (
       prop:"display",
       value:"block"
     ),
-
     flex : (
       prop:"display",
       value:"flex"
@@ -75,6 +97,62 @@ $utilities:(
       value:"none"
     ),
   ),
+  flex:(
+    row:(
+      prop:"flex-direction",
+      value:"row",
+      reverse:(
+        prop:"flex-direction",
+        value:"row-reverse",
+      )
+    ),
+    col:(
+      prop:"flex-direction",
+      value:"column",
+      reverse:(
+        prop:"flex-direction",
+        value:"column-reverse",
+      )
+    ),
+    no:(
+      wrap:(
+        prop:"flex-wrap",
+        value:"nowrap",
+      )
+    ),
+    wrap:(
+      prop:"flex-wrap",
+      value:"wrap",
+      reverse:(
+        prop:"flex-wrap",
+        value:"wrap-reverse",
+      )
+    )
+  ),
+  justify:(
+    start : (
+      prop:"justify-content",
+      value:"flex-start"
+    ),
+    center : (
+      prop:"justify-content",
+      value:"center"
+    ),
+    end : (
+      prop:"justify-content",
+      value:"flex-end"
+    ),
+    between : (
+      prop:"justify-content",
+      value:"space-between"
+    ),
+    around : (
+      prop:"justify-content",
+      value:"space-around"
+    ),
+  ),
+
+
   float:(
     left : (
       prop:"float",
@@ -90,46 +168,6 @@ $utilities:(
     ),
   ),
 );
-
-@function left(){
-  @return left
-};
-
-@function right(){
-  @return right
-};
-
-@function none(){
-  @return none
-};
-
-@function inline(){
-  @return inline
-};
-
-@function block(){
-  @return block
-};
-
-@function inline-block(){
-  @return inline-block
-};
-
-// @function flex(){
-//   @return flex
-// };
-
-@function none(){
-  @return none
-};
-
-@function col(){
-  @return column
-};
-
-@function row(){
-  @return row
-};
 
 @mixin display {
   &-inline{ @include utility(d-inline) }
@@ -158,16 +196,16 @@ $utilities:(
 
 @mixin flex-direction {
   &-row { @include utility(flex-row) }
-  &-row-reverse { flex-direction: row-reverse; }
-  &-col { flex-direction: column; }
-  &-col-reverse { flex-direction: column-reverse; }
+  &-row-reverse {  @include utility(flex-row-reverse) }
+  &-col {  @include utility(flex-col) }
+  &-col-reverse {  @include utility(flex-col-reverse) }
 }
 @mixin justify-content {
-  &-start { justify-content: flex-start; }
-  &-center { justify-content: center; }
-  &-end { justify-content: flex-end; }
-  &-between { justify-content: space-between; }
-  &-around { justify-content: space-around; }
+  &-start { @include utility(justify-start) }
+  &-center { @include utility(justify-center) }
+  &-end { @include utility(justify-end) }
+  &-between { @include utility(justify-between) }
+  &-around { @include utility(justify-around) }
 }
 @mixin align-items {
   &-start { align-items: flex-start; }
@@ -184,9 +222,9 @@ $utilities:(
 }
 
 @mixin flex-wrap {
-  &-no-wrap { flex-wrap: nowrap; }
-  &-wrap { flex-wrap: wrap; }
-  &-wrap-reverse { flex-wrap: wrap-reverse; }
+  &-no-wrap { @include utility(flex-no-wrap); }
+  &-wrap { @include utility(flex-wrap); }
+  &-wrap-reverse { @include utility(flex-wrap-reverse); }
 }
 
 @mixin order {
@@ -351,10 +389,10 @@ $utilities:(
 // @include
 
 // display
-// @include g-d
+// @include g-d;
 
 // // flex
-// @include g-flex; 
+@include g-flex; 
 
 // // float
 // @include g-float;

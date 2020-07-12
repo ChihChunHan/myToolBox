@@ -12,7 +12,7 @@
 
 body {
   @include apply ( d-inline d-flex float-none );
-  @include utility (d-inline-block)
+  // @include utility (d-inline-block)
 }
 
 

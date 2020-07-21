@@ -330,6 +330,48 @@ $utilities: (
         value: "90",
       ),
     ),
+    "1": (
+      prop: "margin",
+      value: $spacing * 0.25,
+    ),
+    "2": (
+      prop: "margin",
+      value: $spacing * 0.5,
+    ),
+    "3": (
+      prop: "margin",
+      value: $spacing * 0.75,
+    ),
+    "4": (
+      prop: "margin",
+      value: $spacing * 1,
+    ),
+    "5": (
+      prop: "margin",
+      value: $spacing * 1.25,
+    ),
+  ),
+  mt: (
+    "1": (
+      prop: "margin-top",
+      value: $spacing * 0.25,
+    ),
+    "2": (
+      prop: "margin-top",
+      value: $spacing * 0.5,
+    ),
+    "3": (
+      prop: "margin-top",
+      value: $spacing * 0.75,
+    ),
+    "4": (
+      prop: "margin-top",
+      value: $spacing * 1,
+    ),
+    "5": (
+      prop: "margin-top",
+      value: $spacing * 1.25,
+    )
   ),
   h: (
     "100": (
@@ -626,19 +668,19 @@ $utilities: (
     @include margin($string, 0);
   }
   &-1 {
-    @include margin($string, 0.25);
-  }
-  &-2 {
-    @include margin($string, 0.5);
-  }
-  &-3 {
     @include margin($string, 1);
   }
+  &-2 {
+    @include margin($string, 2);
+  }
+  &-3 {
+    @include margin($string, 3);
+  }
   &-4 {
-    @include margin($string, 1.5);
+    @include margin($string, 4);
   }
   &-5 {
-    @include margin($string, 3);
+    @include margin($string, 5);
   }
   &-auto {
     @include margin($string, auto);

@@ -330,49 +330,49 @@ $utilities: (
         value: "90",
       ),
     ),
-    "1": (
-      prop: "margin",
-      value: $spacing * 0.25,
-    ),
-    "2": (
-      prop: "margin",
-      value: $spacing * 0.5,
-    ),
-    "3": (
-      prop: "margin",
-      value: $spacing * 0.75,
-    ),
-    "4": (
-      prop: "margin",
-      value: $spacing * 1,
-    ),
-    "5": (
-      prop: "margin",
-      value: $spacing * 1.25,
-    ),
+    // "1": (
+    //   prop: "margin",
+    //   value: $spacing * 0.25,
+    // ),
+    // "2": (
+    //   prop: "margin",
+    //   value: $spacing * 0.5,
+    // ),
+    // "3": (
+    //   prop: "margin",
+    //   value: $spacing * 0.75,
+    // ),
+    // "4": (
+    //   prop: "margin",
+    //   value: $spacing * 1,
+    // ),
+    // "5": (
+    //   prop: "margin",
+    //   value: $spacing * 1.25,
+    // ),
   ),
-  mt: (
-    "1": (
-      prop: "margin-top",
-      value: $spacing * 0.25,
-    ),
-    "2": (
-      prop: "margin-top",
-      value: $spacing * 0.5,
-    ),
-    "3": (
-      prop: "margin-top",
-      value: $spacing * 0.75,
-    ),
-    "4": (
-      prop: "margin-top",
-      value: $spacing * 1,
-    ),
-    "5": (
-      prop: "margin-top",
-      value: $spacing * 1.25,
-    )
-  ),
+  // mt: (
+  //   "1": (
+  //     prop: "margin-top",
+  //     value: $spacing * 0.25,
+  //   ),
+  //   "2": (
+  //     prop: "margin-top",
+  //     value: $spacing * 0.5,
+  //   ),
+  //   "3": (
+  //     prop: "margin-top",
+  //     value: $spacing * 0.75,
+  //   ),
+  //   "4": (
+  //     prop: "margin-top",
+  //     value: $spacing * 1,
+  //   ),
+  //   "5": (
+  //     prop: "margin-top",
+  //     value: $spacing * 1.25,
+  //   )
+  // ),
   h: (
     "100": (
       prop: "height",
@@ -663,66 +663,66 @@ $utilities: (
 }
 
 // margin & padding
-@mixin margin-($string) {
-  &-0 {
-    @include margin($string, 0);
-  }
-  &-1 {
-    @include margin($string, 1);
-  }
-  &-2 {
-    @include margin($string, 2);
-  }
-  &-3 {
-    @include margin($string, 3);
-  }
-  &-4 {
-    @include margin($string, 4);
-  }
-  &-5 {
-    @include margin($string, 5);
-  }
-  &-auto {
-    @include margin($string, auto);
-  }
-}
+// @mixin margin-($string) {
+//   &-0 {
+//     @include margin($string, 0);
+//   }
+//   &-1 {
+//     @include margin($string, 1);
+//   }
+//   &-2 {
+//     @include margin($string, 2);
+//   }
+//   &-3 {
+//     @include margin($string, 3);
+//   }
+//   &-4 {
+//     @include margin($string, 4);
+//   }
+//   &-5 {
+//     @include margin($string, 5);
+//   }
+//   &-auto {
+//     @include margin($string, auto);
+//   }
+// }
 
-@mixin margin_style {
-  @include margin-("");
-  &t {
-    @include margin-(top);
-  }
-  &r {
-    @include margin-(right);
-  }
-  &b {
-    @include margin-(bottom);
-  }
-  &l {
-    @include margin-(left);
-  }
-  &x {
-    @include margin-(x);
-  }
-  &y {
-    @include margin-(y);
-  }
-}
+// @mixin margin_style {
+//   @include margin-("");
+//   &t {
+//     @include margin-(top);
+//   }
+//   &r {
+//     @include margin-(right);
+//   }
+//   &b {
+//     @include margin-(bottom);
+//   }
+//   &l {
+//     @include margin-(left);
+//   }
+//   &x {
+//     @include margin-(x);
+//   }
+//   &y {
+//     @include margin-(y);
+//   }
+// }
 
-@mixin g-m {
-  .m {
-    @include margin_style();
-  }
-  @each $key in $media_list {
-    @include rwd($key) {
-      @at-root .#{$key}\: {
-        &m {
-          @include margin_style();
-        }
-      }
-    }
-  }
-}
+// @mixin g-m {
+//   .m {
+//     @include margin_style();
+//   }
+//   @each $key in $media_list {
+//     @include rwd($key) {
+//       @at-root .#{$key}\: {
+//         &m {
+//           @include margin_style();
+//         }
+//       }
+//     }
+//   }
+// }
 
 // @include
 
@@ -743,6 +743,3 @@ $utilities: (
 
 // // size
 @include g-size;
-
-// // margin
-// @include g-m;

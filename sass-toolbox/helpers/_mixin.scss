@@ -81,7 +81,6 @@
 
 
 @function value_handler($value,$spacing){
-  @debug $value;
   @if $value == 0 { @return 0; }
   @if $value == auto { @return auto; }
   @if empty(unit($value)) == false { @return $value; }

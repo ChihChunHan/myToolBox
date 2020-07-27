@@ -36,59 +36,66 @@
 //// rwd ////
 
 // rwd breakpoints
-@mixin rwd($setpoint) {
+@mixin rwd($set_point) {
   @if $media_first == mobile {
-    @media (min-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (min-width: rwd_get_map($set_point,breakpoints) ) {
       @content;
     }
   } @else {
-    @media (max-width: rwdGetMap($setpoint,breakpoints) ) {
+    @media (max-width: rwd_get_map($set_point,breakpoints) ) {
       @content;
     }
   }
 };
-
 
 //// margin & padding ////
 
-@mixin margin($direction,$value) {
-  @include m_p_generator($direction,$value,$spacing,'margin')
-}
-@mixin padding($direction,$value) {
-  @include m_p_generator($direction,$value,$spacing,'padding')
-}
 
-// margin & padding css generator
-@mixin m_p_generator($direction,$value,$spacing,$style){
-  @if $direction == x {
-    #{$style}-left: calc_value($value,$spacing);
-    #{$style}-right: calc_value($value,$spacing);
 
-  } @else if $direction == y {
-    #{$style}-top: calc_value($value,$spacing);
-    #{$style}-bottom: calc_value($value,$spacing);
-    
-  } @else {
-    #{style_and_direction($style,$direction)}: calc_value($value,$spacing);
+// @if empty(unit($value)) {  };
+@mixin margin($string,$value) {
+  $data : setting_date($string,$value,"margin");
+  @include generator-style($data)
+};
+
+@mixin padding($string,$value) {
+  $data : setting_date($string,$value,"padding");
+  @include generator-style($data)
+};
+
+@mixin generator-style($data){
+  @each $direction in map-get($data,direction) {
+    #{map-get($data,type)+$direction}:map-get($data,length);
   }
-};
-
-// deal with style string
-@function style_and_direction ($style,$direction:"") {
-  @return #{$style}#{add_dash($direction)};
-};
-@function add_dash($direction){
-  @if $direction != ""{ @return -$direction;}
-  @else { @return "";}
-};
+}
 
 
-// deal with style value
-@function calc_value($value,$spacing){
+
+@function setting_date($string,$value,$type){
+  @return (
+    direction:string_handler($string),
+    length:value_handler($value,$spacing),
+    type:$type
+  )
+};
+
+
+@function value_handler($value,$spacing){
   @if $value == 0 { @return 0; }
-  @else if $value == auto { @return auto; }
-  @else if empty(unit($value)) { @return $spacing * $value; }
-  @else { @return $value; }
+  @if $value == auto { @return auto; }
+  @if empty(unit($value)) == false { @return $value; }
+  @if empty(unit($value)) { @return $value * $spacing * 0.25 }
 };
+
+
+@function string_handler($string) {
+  $direc_list:"";
+  @if $string == x { $direc_list:"-left","-right" }
+  @else if $string == y { $direc_list:"-top","-bottom" }
+  @else if empty($string) == false { $direc_list:"-#{$string}" }
+  @return $direc_list
+};
+
+
 
 

@@ -1,0 +1,22 @@
+@mixin v-transition($transition_name,$args,$transition){
+  .#{$transition_name}{
+    &-enter{
+      @each $key,$val in $args {
+        #{$key}:#{nth($val,1)} !important
+      }
+    }
+    &-enter-to,&-leave{
+      @each $key,$val in $args {
+        #{$key}:#{nth($val,2)} !important
+      }
+    }
+    &-leave-to{
+      @each $key,$val in $args {
+        #{$key}:#{nth($val,3)} !important
+      }
+    }
+    &-enter-active,&-leave-active{
+      transition: $transition
+    }
+  }
+};

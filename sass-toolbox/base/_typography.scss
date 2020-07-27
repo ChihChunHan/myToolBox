@@ -10,8 +10,8 @@
 h1, h2, h3, h4, h5, h6, p, small, span,
 li, th, td,
 button, a, option, label {
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: normal;
-  line-height: 1.5;
+  font-family: $default_font_family;
+  letter-spacing: $default_letter_spacing;
+  line-height: $default_line_height;
 }
 

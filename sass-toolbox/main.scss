@@ -6,12 +6,15 @@
 @import './helpers/function';
 @import './helpers/mixin';
 
-@import './layout/utilities';
+@import './layout/utilities-native';
 @import './layout/grid';
 
-@import './page/index.scss'
+@import './page/index.scss';
 
-
+div {
+  // @include apply( sm\:d-flex );
+  @extend .md\:d-none
+}
 
 
 

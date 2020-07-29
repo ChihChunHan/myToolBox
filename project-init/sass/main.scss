@@ -1,19 +1,18 @@
 @import './base/reset';
 @import './base/setting';
 
-@import './helpers/variables';
 @import './helpers/function';
 @import './helpers/mixin';
+@import './helpers/variables';
 
 @import './layout/typography';
 @import './layout/utilities';
 @import './layout/grid';
 
+@import './components/Header/HeaderComponent';
+@import './components/Carousel/CarouselComponent.scss';
+@import './components/GoTopComponent.scss';
+
+@import './page/style.scss';
 @import './page/index.scss';
 
-div{
-  @include apply('');
-  .test{
-    @include apply("d-none sm:d-flex");
-  }
-}

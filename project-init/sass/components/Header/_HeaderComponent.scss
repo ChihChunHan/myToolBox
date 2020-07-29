@@ -1,0 +1,17 @@
+@import "./MenuComponent";
+
+header {
+  .logo {
+    max-width: 43px;
+    width: 100%;
+    > img {
+      width: 100%;
+    }
+  }
+
+  .menu_btn{
+    border: 3px solid #000;
+    background-color: $c_sub;
+    font-weight: 900;
+  }
+}

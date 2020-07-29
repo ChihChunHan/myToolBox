@@ -1,0 +1,31 @@
+.menu {
+  @include apply(d-flex flex-col justify-center items-center);
+  position: absolute;
+  top: $header_height;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-color: $c_sub;
+  z-index: 1;
+  > a {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  @include rwd(md){
+    height: auto;
+    display: block !important;
+    position: static;
+    width: auto;
+    background-color: transparent;
+    > a {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      @include margin(x,3);
+      &:hover {
+        color: $c_sub
+      }
+    }
+  };
+}

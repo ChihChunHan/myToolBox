@@ -1,0 +1,10 @@
+@import "./ButtonComponent.scss";
+
+.controller-component {
+  width: 100%;
+  > div.pointer-container {
+    position: absolute;
+    @include X_center();
+    bottom: 0;
+  }
+}

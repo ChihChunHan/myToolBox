@@ -1,0 +1,30 @@
+button.top_btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+.goTop-from-bottom {
+  &-enter,&-leave-to {
+    bottom: -100px !important;
+  }
+  &-enter-active,&-leave-active {
+    transition: bottom 0.2s;
+  }
+}
+
+.goTop-zoom-in {
+  &-enter,&-leave-to {
+    transform: scale(0);
+    > span {
+      opacity: 0;
+    }
+  }
+  &-enter-active,&-leave-active {
+    transition: transform 0.2s ;
+    > span {
+      transition: opacity .5s .2s;
+    }
+  }
+}

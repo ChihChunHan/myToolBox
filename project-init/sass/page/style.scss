@@ -1,0 +1,14 @@
+header {
+  background-color: $c_main;
+  > .container {
+    min-height: $header_height;
+  };
+}
+
+footer {
+  box-sizing: content-box;
+  border-top: $footer_border_top solid $c_sub;
+  min-height: $footer_height;
+  background-color: $c_main;
+  overflow: auto;
+}

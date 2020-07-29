@@ -1,0 +1,55 @@
+
+
+.main {
+  h2 {
+    @include margin(y,4);
+  }
+  p {
+    @include margin(bottom,2);
+  }
+  .col-12 {
+    @include margin(bottom,4);
+    > div {
+      width: 100%;
+      @include margin(y,2);
+      @include rwd(sm){
+        @include margin(top,2);
+        max-width: 350px;
+      };
+      > img {
+        width: 100%;
+      }
+    }
+    @include nth(even){
+      > div {
+        float: left;
+        @include margin(right,2);
+      }
+    };
+    @include nth(odd){
+      > div {
+        float: right;
+        @include margin(left,2);
+      }
+    };
+  }
+}
+
+footer {
+  .container {
+    @include margin(y,6);
+    @include padding(x,2);
+    > .col-6 {
+      @include margin(y,4);
+      > h3 {
+        @include margin(bottom,3);
+      }
+      li {
+        @include margin(bottom,1);
+        &.join{
+          @include margin(top,3);
+        }
+      }
+    }
+  };
+}

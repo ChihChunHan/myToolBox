@@ -1,0 +1,15 @@
+@import "./Container/ContainerComponent.scss";
+@import "./Controller/ControllerComponent.scss";
+
+@function ratioHeight($width,$ratio:$ratio){
+  @return $width / $ratio
+};
+
+.carousel-component {
+  position: relative;
+
+  width: 100%;
+  height: ratioHeight(480px);
+  @include rwd(md){ height: ratioHeight(768px); };
+  @include rwd(lg){ height: ratioHeight(1440px); };
+}

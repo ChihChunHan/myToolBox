@@ -1,0 +1,586 @@
+// refs tailwinds @apply
+
+@mixin apply($utilities_list) {
+  @if (length($utilities_list) == 1) {
+    @include utility($utilities_list);
+  } @else {
+    @each $utility in $utilities_list {
+      @include utility($utility);
+    }
+  }
+}
+
+// utilities handler
+
+@mixin utility($utility) {
+  $list: str_slice_by_dash($utility);
+  $style: utility_handler($list);
+  #{map-get($style,prop)}: #{map-get($style, value)};
+}
+
+// utilities string handler
+
+@function str_slice_by_dash($str) {
+  $list: ();
+  @while get_dash($str) != null {
+    $list: append($list, get_first_str($str));
+    $str: get_rest_str($str);
+  }
+  $list: append($list, $str);
+  @return $list;
+}
+
+@function get_dash($str) {
+  @return str_index($str, "-");
+}
+
+@function get_first_str($str) {
+  @return str_slice($str, 1, (get_dash($str) - 1));
+}
+
+@function get_rest_str($str) {
+  @return str_slice($str, (get_dash($str) + 1));
+}
+
+// utilities
+
+@function utility_handler($list) {
+  $style: $utilities;
+  @for $i from 1 through length($list) {
+    $style: map-get($style, nth($list, $i));
+  }
+  @return $style;
+}
+
+@function set_map($prop, $value) {
+  @return (prop: $prop, value: $value);
+}
+
+$utilities: (
+  d: (
+    inline: (
+      prop: "display",
+      value: "inline",
+      block: (
+        prop: "display",
+        value: "inline-block",
+      ),
+    ),
+    block: (
+      prop: "display",
+      value: "block",
+    ),
+    flex: (
+      prop: "display",
+      value: "flex",
+    ),
+    none: (
+      prop: "display",
+      value: "none",
+    ),
+  ),
+  flex: (
+    row: (
+      prop: "flex-direction",
+      value: "row",
+      reverse: (
+        prop: "flex-direction",
+        value: "row-reverse",
+      ),
+    ),
+    col: (
+      prop: "flex-direction",
+      value: "column",
+      reverse: (
+        prop: "flex-direction",
+        value: "column-reverse",
+      ),
+    ),
+    no: (
+      wrap: (
+        prop: "flex-wrap",
+        value: "nowrap",
+      ),
+    ),
+    wrap: (
+      prop: "flex-wrap",
+      value: "wrap",
+      reverse: (
+        prop: "flex-wrap",
+        value: "wrap-reverse",
+      ),
+    ),
+  ),
+  justify: (
+    start: (
+      prop: "justify-content",
+      value: "flex-start",
+    ),
+    center: (
+      prop: "justify-content",
+      value: "center",
+    ),
+    end: (
+      prop: "justify-content",
+      value: "flex-end",
+    ),
+    between: (
+      prop: "justify-content",
+      value: "space-between",
+    ),
+    around: (
+      prop: "justify-content",
+      value: "space-around",
+    ),
+  ),
+  items: (
+    start: (
+      prop: "align-items",
+      value: "flex-start",
+    ),
+    center: (
+      prop: "align-items",
+      value: "center",
+    ),
+    end: (
+      prop: "align-items",
+      value: "flex-end",
+    ),
+    stretch: (
+      prop: "align-items",
+      value: "stretch",
+    ),
+  ),
+  self: (
+    start: (
+      prop: "align-self",
+      value: "flex-start",
+    ),
+    center: (
+      prop: "align-self",
+      value: "center",
+    ),
+    end: (
+      prop: "align-self",
+      value: "flex-end",
+    ),
+    stretch: (
+      prop: "align-self",
+      value: "stretch",
+    ),
+  ),
+  order: (
+    first: (
+      prop: "order",
+      value: "-9999",
+    ),
+    last: (
+      prop: "order",
+      value: "9999",
+    ),
+    none: (
+      prop: "order",
+      value: "0",
+    ),
+    "1": (
+      prop: "order",
+      value: "1",
+    ),
+    "2": (
+      prop: "order",
+      value: "2",
+    ),
+    "3": (
+      prop: "order",
+      value: "3",
+    ),
+    "4": (
+      prop: "order",
+      value: "4",
+    ),
+    "5": (
+      prop: "order",
+      value: "5",
+    ),
+    "6": (
+      prop: "order",
+      value: "6",
+    ),
+    "7": (
+      prop: "order",
+      value: "7",
+    ),
+    "8": (
+      prop: "order",
+      value: "8",
+    ),
+    "9": (
+      prop: "order",
+      value: "9",
+    ),
+    "10": (
+      prop: "order",
+      value: "10",
+    ),
+    "11": (
+      prop: "order",
+      value: "11",
+    ),
+    "12": (
+      prop: "order",
+      value: "12",
+    ),
+  ),
+  float: (
+    left: (
+      prop: "float",
+      value: "left",
+    ),
+    right: (
+      prop: "float",
+      value: "right",
+    ),
+    none: (
+      prop: "float",
+      value: "none",
+    ),
+  ),
+  text: (
+    left: (
+      prop: "text-align",
+      value: "left",
+    ),
+    right: (
+      prop: "text-align",
+      value: "right",
+    ),
+    center: (
+      prop: "text-align",
+      value: "center",
+    ),
+  ),
+  m: (
+    w: (
+      n: (
+        prop: "max-width",
+        value: "none",
+      ),
+      "100": (
+        prop: "max-width",
+        value: "100",
+      ),
+      "90": (
+        prop: "max-width",
+        value: "90",
+      ),
+    ),
+  ),
+  
+  h: (
+    "100": (
+      prop: "height",
+      value: "100%",
+    ),
+  ),
+  w: (
+    "100": (
+      prop: "width",
+      value: "100%",
+    ),
+  ),
+);
+
+@mixin set_utilities($prop, $list) {
+  @each $val in $list {
+    &-#{$val} {
+      @include utility(#{$prop}-#{$val});
+    }
+  }
+}
+
+// @debug $utilities;
+@mixin display {
+  &-inline {
+    @include utility(d-inline);
+  }
+  &-block {
+    @include utility(d-block);
+  }
+  &-inline-block {
+    @include utility(d-inline-block);
+  }
+  &-flex {
+    @include utility(d-flex);
+  }
+  &-none {
+    @include utility(d-none);
+  }
+}
+@mixin g-d {
+  .d {
+    @include display;
+    @each $key in $media_list {
+      @include rwd($key) {
+        @at-root .#{$key}\: {
+          &d {
+            @include display;
+          }
+        }
+      }
+    }
+  }
+}
+
+// flex
+@mixin flex-direction {
+  &-row {
+    @include utility(flex-row);
+  }
+  &-row-reverse {
+    @include utility(flex-row-reverse);
+  }
+  &-col {
+    @include utility(flex-col);
+  }
+  &-col-reverse {
+    @include utility(flex-col-reverse);
+  }
+}
+@mixin justify-content {
+  &-start {
+    @include utility(justify-start);
+  }
+  &-center {
+    @include utility(justify-center);
+  }
+  &-end {
+    @include utility(justify-end);
+  }
+  &-between {
+    @include utility(justify-between);
+  }
+  &-around {
+    @include utility(justify-around);
+  }
+}
+@mixin align-items {
+  &-start {
+    @include utility(items-start);
+  }
+  &-center {
+    @include utility(items-center);
+  }
+  &-end {
+    @include utility(items-end);
+  }
+  &-stretch {
+    @include utility(items-stretch);
+  }
+}
+@mixin align-self {
+  &-start {
+    @include utility(self-start);
+  }
+  &-center {
+    @include utility(self-center);
+  }
+  &-end {
+    @include utility(self-end);
+  }
+  &-stretch {
+    @include utility(self-stretch);
+  }
+}
+@mixin flex-wrap {
+  &-no-wrap {
+    @include utility(flex-no-wrap);
+  }
+  &-wrap {
+    @include utility(flex-wrap);
+  }
+  &-wrap-reverse {
+    @include utility(flex-wrap-reverse);
+  }
+}
+@mixin order {
+  &-first {
+    @include utility(order-first);
+  }
+  &-last {
+    @include utility(order-last);
+  }
+  &-none {
+    @include utility(order-none);
+  }
+  @for $i from 1 through 12 {
+    &-#{$i} {
+      @include utility(#{"order-" + $i});
+    }
+  }
+}
+@mixin g-flex {
+  .flex {
+    @include flex-direction;
+    @include flex-wrap;
+    &-center-center {
+      @include flex-center-center;
+    }
+  }
+  .justify {
+    @include justify-content;
+  }
+  .items {
+    @include align-items;
+  }
+  .self {
+    @include align-self;
+  }
+  .order {
+    @include order;
+  }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\: {
+        &flex {
+          @include flex-direction;
+          @include flex-wrap;
+          &-center-center {
+            @include flex-center-center;
+          }
+        }
+        &justify {
+          @include justify-content;
+        }
+        &items {
+          @include align-items;
+        }
+        &self {
+          @include align-self;
+        }
+        &order {
+          @include order;
+        }
+      }
+    }
+  }
+}
+
+// float
+@mixin float {
+  &-left {
+    @include utility(float-left);
+  }
+  &-right {
+    @include utility(float-right);
+  }
+  &-none {
+    @include utility(float-none);
+  }
+  &-fix {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+}
+@mixin g-float {
+  .float {
+    @include float;
+  }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\: {
+        &float {
+          @include float;
+        }
+      }
+    }
+  }
+}
+
+// text align
+
+@mixin g-text {
+  .text {
+    @include set_utilities(text, left right center);
+  }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\: {
+        &text {
+          @include set_utilities(text, left right center);
+        }
+      }
+    }
+  }
+}
+
+// max-width
+@mixin g-max-w {
+  .max-w {
+    @include set_utilities(m-w, n 100 90);
+  }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\: {
+        &max-w {
+          @include set_utilities(m-w, n 100 90);
+        }
+      }
+    }
+  }
+}
+
+// size
+@mixin size-100($str) {
+  &-100 {
+    #{$str}: 100%;
+  }
+}
+
+@mixin g-size {
+  .h {
+    @include utility(h-100);
+  }
+  .w {
+    @include utility(w-100);
+  }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\: {
+        &h {
+          @include size-100(height);
+        }
+        &w {
+          @include size-100(width);
+        }
+      }
+    }
+  }
+}
+
+// @include
+
+// display
+@include g-d;
+
+// // flex
+@include g-flex;
+
+// // float
+@include g-float;
+
+// // text-align
+@include g-text;
+
+// // max-width
+@include g-max-w;
+
+// // size
+@include g-size;

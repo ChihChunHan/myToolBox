@@ -1,0 +1,53 @@
+// html{
+//   font-size: rwdGetMap(nth($mediaList,1),fontSize);
+//   @for $i from 2 through 4 {
+//     @include rwd(nth($mediaList,$i)){
+//       font-size: rwdGetMap(nth($mediaList,$i),fontSize);
+//     };
+//   }
+// }
+
+h1, h2, h3, h4, h5, h6, p, small, span,
+li, th, td,
+button, a, option, label {
+  font-family: $default_font_family;
+  letter-spacing: $default_letter_spacing;
+  line-height: $default_line_height;
+}
+
+h1 {
+  font-size: $h1_fz * 0.3;
+  @include rwd(md){ font-size: $h1_fz * 0.4; };
+  @include rwd(lg){ font-size: $h1_fz; };
+  font-weight: $h1_fw;
+  color: $c_main;
+}
+
+h2 {
+  font-size: $h2_fz * 0.3;
+  @include rwd(md){ font-size: $h2_fz * 0.5; };
+  @include rwd(lg) { font-size: $h2_fz; }
+  font-weight: $h2_fw;
+  color: $c_sub;
+}
+
+h3 {
+  font-size: $h3_fz;
+  font-weight: $h3_fw;
+  color: $c_sub;
+}
+
+h4 {
+  font-size: $h4_fz;
+  font-weight: $h4_fw;
+  color: #fff;
+}
+
+p {
+  font-size: $p_fz * 0.8;
+  @include rwd(md) { font-size: $p_fz * 0.85; }
+  @include rwd(lg) { font-size: $p_fz; }
+  font-weight: $p_fw;
+  color: $c_main;
+}
+

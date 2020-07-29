@@ -1,0 +1,11 @@
+// this is a mixin to create stripe linear-gradient
+@mixin bdi-Zline($deg, $num, $main-color, $stripe-color, $length) {
+  $list: $deg ;
+  @for $i from 0 through $num {
+    $list: append($list, $main-color #{100% / $num * $i}, comma);
+    $list: append($list, $stripe-color #{100% / $num * $i}, comma);
+    $list: append($list, $stripe-color #{100% / $num * $i + $length}, comma);
+    $list: append($list, $main-color #{100% / $num * $i + $length}, comma);
+  }
+  background-image: linear-gradient($list);
+}

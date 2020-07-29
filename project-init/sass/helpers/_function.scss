@@ -1,0 +1,31 @@
+@function empty($value) {
+  @if not $value 
+      or $value == "" 
+      or $value == 0
+      or $value == ()
+      or length($value) == 0 {
+    @return true;
+  }
+  @return false;
+}
+
+@function rwd_get_map($setPoint,$key) {
+  @return map-get((map-get($rwd,$setPoint)),$key)
+};
+
+
+// golden-ratio: n = ( n * 0.618 ) + ( n * 0.618 * 0.618 )
+@function golden_ratio_calc($value,$level){
+  @return $value * pow(1.618,$level - 1);
+}
+
+// math.power n*n*n
+@function pow($v,$t){
+  @if $t == 0 { @return 1 }
+
+  $nv:$v;
+  @for $i from 1 to $t { $nv:$nv*$v }
+  @return $nv;
+}
+
+

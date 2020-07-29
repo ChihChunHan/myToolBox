@@ -1,0 +1,32 @@
+.menu-show {
+  &-enter {
+    height: 0 !important;
+    > a {
+      opacity: 0 !important;
+      transform: translateX(-10px);
+    }
+  }
+
+  &-enter-to {
+    height: 250px !important;
+    > a {
+      opacity: 1 !important;
+      transform: translateX(0px);
+    }
+  }
+
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transition: height 0.25s;
+    > a {
+      transition: opacity 0.25s 0.25s, transform 0.25s 0.25s;
+    }
+  }
+
+  &-leave-active {
+    transition: opacity 0.5s;
+  }
+}

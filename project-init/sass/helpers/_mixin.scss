@@ -1,0 +1,111 @@
+@mixin font($z:1,$w:4) {
+  @if (empty(unit($z))) { font-size: #{$z}rem; } 
+  @else { font-size: $z; }
+  font-weight: $w * 100;
+}
+
+@mixin size($width,$height:$width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex_center_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin position {
+  position: absolute;
+}
+
+@mixin X_center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin Y_center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//// css selector ////
+
+// nth-of-type
+@mixin nth($nth) {
+  @if $nth == 1 {
+    &:first-of-type { @content; }
+  } @else if $nth == -1 {
+    &:last-of-type { @content; }
+  } @else {
+    &:nth-of-type(#{$nth}) { @content; }
+  }
+}
+
+
+
+//// rwd ////
+
+// rwd breakpoints
+@mixin rwd($set_point) {
+  @if $media_first == mobile {
+    @media (min-width: rwd_get_map($set_point,breakpoints) ) {
+      @content;
+    }
+  } @else {
+    @media (max-width: rwd_get_map($set_point,breakpoints) ) {
+      @content;
+    }
+  }
+};
+
+//// margin & padding ////
+
+
+
+// @if empty(unit($value)) {  };
+@mixin margin($string,$value) {
+  $data : setting_date($string,$value,"margin");
+  @include generator-style($data)
+};
+
+@mixin padding($string,$value) {
+  $data : setting_date($string,$value,"padding");
+  @include generator-style($data)
+};
+
+@mixin generator-style($data){
+  @each $direction in map-get($data,direction) {
+    #{map-get($data,type)+$direction}:map-get($data,length);
+  }
+}
+
+
+
+@function setting_date($string,$value,$type){
+  @return (
+    direction:string_handler($string),
+    length:value_handler($value,$spacing),
+    type:$type
+  )
+};
+
+
+@function value_handler($value,$spacing){
+  @if $value == 0 { @return 0; }
+  @if $value == auto { @return auto; }
+  @if empty(unit($value)) == false { @return $value; }
+  @if empty(unit($value)) { @return $value * $spacing * 0.25 }
+};
+
+
+@function string_handler($string) {
+  $direc_list:"";
+  @if $string == x { $direc_list:"-left","-right" }
+  @else if $string == y { $direc_list:"-top","-bottom" }
+  @else if empty($string) == false { $direc_list:"-#{$string}" }
+  @return $direc_list
+};
+
+
+
+

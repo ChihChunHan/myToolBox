@@ -6,14 +6,13 @@
 @import './helpers/function';
 @import './helpers/mixin';
 
-@import './layout/utilities-native';
+@import './layout/utilities';
 @import './layout/grid';
 
 @import './page/index.scss';
 
-div {
-  // @include apply( sm\:d-flex );
-  @extend .md\:d-none
+.test {
+  @include apply("sm:d-flex d-none md:d-inline-block lg:d-block")
 }
 
 

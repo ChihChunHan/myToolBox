@@ -14,38 +14,59 @@
 	// }
 
 	//// @mixin ////
+	"@mixin apply": {
+		"prefix": "apply",
+		"body": [
+			"@include apply(\"$0\");"
+		],
+		"description": "@mixin apply"
+	},
+	"@mixin font": {
+		"prefix": "font",
+		"body": [
+			"@include font(${1:size},${2:weight});"
+		],
+		"description": "@mixin font"
+	},
+	"@mixin size": {
+		"prefix": ["size","z"],
+		"body": [
+			"@include size(${0:${1:weight},${2:height}});"
+		],
+		"description": "@mixin size"
+	},
 	"generate @mixin rwd-sm": {
-		"prefix": "rwd-sm",
+		"prefix": "sm",
 		"body": [
 			"@include rwd(sm){",
-			"  ",
+			"  $0",
 			"};"
 		],
 		"description": "@mixin rwd-sm"
 	},
 	"generate @mixin rwd-md": {
-		"prefix": "rwd-md",
+		"prefix": "md",
 		"body": [
 			"@include rwd(md){",
-			"  ",
+			"  $0",
 			"};"
 		],
 		"description": "@mixin rwd-md"
 	},
 	"generate @mixin rwd-lg": {
-		"prefix": "rwd-lg",
+		"prefix": "lg",
 		"body": [
 			"@include rwd(lg){",
-			"  ",
+			"  $0",
 			"};"
 		],
 		"description": "@mixin rwd-lg"
 	},
 	"generate @mixin rwd-xl": {
-		"prefix": "rwd-xl",
+		"prefix": "xl",
 		"body": [
 			"@include rwd(xl){",
-			"  ",
+			"  $0",
 			"};"
 		],
 		"description": "@mixin rwd-xl"
@@ -53,111 +74,23 @@
 	"generate @mixin nthType": {
 		"prefix": "nth",
 		"body": [
-			"@include nth(1){",
-			"  ",
+			"@include nth(${1:num}){",
+			"  $0",
 			"};"
 		],
 		"description": "@mixin nthType"
 	},
-	"@mixin margin-0": { "prefix": "m-0", "body": ["@include margin('',0);"], "description": "@mixin margin-0" },
-	"@mixin margin-1": { "prefix": "m-1", "body": ["@include margin('',1);"], "description": "@mixin margin-1" },
-	"@mixin margin-2": { "prefix": "m-2", "body": ["@include margin('',2);"], "description": "@mixin margin-2" },
-	"@mixin margin-3": { "prefix": "m-3", "body": ["@include margin('',3);"], "description": "@mixin margin-3" },
-	"@mixin margin-4": { "prefix": "m-4", "body": ["@include margin('',4);"], "description": "@mixin margin-4" },
-	"@mixin margin-5": { "prefix": "m-5", "body": ["@include margin('',5);"], "description": "@mixin margin-5" },
-	"@mixin margin-auto": { "prefix": "m-auto", "body": ["@include margin('',auto);"], "description": "@mixin margin-auto" },
-	"@mixin margin-top-0": { "prefix": "mt-0", "body": ["@include margin(top,0);"], "description": "@mixin margin-top-0" },
-	"@mixin margin-top-1": { "prefix": "mt-1", "body": ["@include margin(top,1);"], "description": "@mixin margin-top-1" },
-	"@mixin margin-top-2": { "prefix": "mt-2", "body": ["@include margin(top,2);"], "description": "@mixin margin-top-2" },
-	"@mixin margin-top-3": { "prefix": "mt-3", "body": ["@include margin(top,3);"], "description": "@mixin margin-top-3" },
-	"@mixin margin-top-4": { "prefix": "mt-4", "body": ["@include margin(top,4);"], "description": "@mixin margin-top-4" },
-	"@mixin margin-top-5": { "prefix": "mt-5", "body": ["@include margin(top,5);"], "description": "@mixin margin-top-5" },
-	"@mixin margin-top-auto": { "prefix": "mt-auto", "body": ["@include margin(top,auto);"], "description": "@mixin margin-top-auto" },
-	"@mixin margin-right-0": { "prefix": "mr-0", "body": ["@include margin(right,0);"], "description": "@mixin margin-right-0" },
-	"@mixin margin-right-1": { "prefix": "mr-1", "body": ["@include margin(right,1);"], "description": "@mixin margin-right-1" },
-	"@mixin margin-right-2": { "prefix": "mr-2", "body": ["@include margin(right,2);"], "description": "@mixin margin-right-2" },
-	"@mixin margin-right-3": { "prefix": "mr-3", "body": ["@include margin(right,3);"], "description": "@mixin margin-right-3" },
-	"@mixin margin-right-4": { "prefix": "mr-4", "body": ["@include margin(right,4);"], "description": "@mixin margin-right-4" },
-	"@mixin margin-right-5": { "prefix": "mr-5", "body": ["@include margin(right,5);"], "description": "@mixin margin-right-5" },
-	"@mixin margin-right-auto": { "prefix": "mr-auto", "body": ["@include margin(right,auto);"], "description": "@mixin margin-right-auto" },
-	"@mixin margin-bottom-0": { "prefix": "mb-0", "body": ["@include margin(bottom,0);"], "description": "@mixin margin-bottom-0" },
-	"@mixin margin-bottom-1": { "prefix": "mb-1", "body": ["@include margin(bottom,1);"], "description": "@mixin margin-bottom-1" },
-	"@mixin margin-bottom-2": { "prefix": "mb-2", "body": ["@include margin(bottom,2);"], "description": "@mixin margin-bottom-2" },
-	"@mixin margin-bottom-3": { "prefix": "mb-3", "body": ["@include margin(bottom,3);"], "description": "@mixin margin-bottom-3" },
-	"@mixin margin-bottom-4": { "prefix": "mb-4", "body": ["@include margin(bottom,4);"], "description": "@mixin margin-bottom-4" },
-	"@mixin margin-bottom-5": { "prefix": "mb-5", "body": ["@include margin(bottom,5);"], "description": "@mixin margin-bottom-5" },
-	"@mixin margin-bottom-auto": { "prefix": "mb-auto", "body": ["@include margin(bottom,auto);"], "description": "@mixin margin-bottom-auto" },
-	"@mixin margin-left-0": { "prefix": "ml-0", "body": ["@include margin(left,0);"], "description": "@mixin margin-left-0" },
-	"@mixin margin-left-1": { "prefix": "ml-1", "body": ["@include margin(left,1);"], "description": "@mixin margin-left-1" },
-	"@mixin margin-left-2": { "prefix": "ml-2", "body": ["@include margin(left,2);"], "description": "@mixin margin-left-2" },
-	"@mixin margin-left-3": { "prefix": "ml-3", "body": ["@include margin(left,3);"], "description": "@mixin margin-left-3" },
-	"@mixin margin-left-4": { "prefix": "ml-4", "body": ["@include margin(left,4);"], "description": "@mixin margin-left-4" },
-	"@mixin margin-left-5": { "prefix": "ml-5", "body": ["@include margin(left,5);"], "description": "@mixin margin-left-5" },
-	"@mixin margin-left-auto": { "prefix": "ml-auto", "body": ["@include margin(left,auto);"], "description": "@mixin margin-left-auto" },
-	"@mixin margin-x-0": { "prefix": "mx-0", "body": ["@include margin(x,0);"], "description": "@mixin margin-x-0" },
-	"@mixin margin-x-1": { "prefix": "mx-1", "body": ["@include margin(x,1);"], "description": "@mixin margin-x-1" },
-	"@mixin margin-x-2": { "prefix": "mx-2", "body": ["@include margin(x,2);"], "description": "@mixin margin-x-2" },
-	"@mixin margin-x-3": { "prefix": "mx-3", "body": ["@include margin(x,3);"], "description": "@mixin margin-x-3" },
-	"@mixin margin-x-4": { "prefix": "mx-4", "body": ["@include margin(x,4);"], "description": "@mixin margin-x-4" },
-	"@mixin margin-x-5": { "prefix": "mx-5", "body": ["@include margin(x,5);"], "description": "@mixin margin-x-5" },
-	"@mixin margin-x-auto": { "prefix": "mx-auto", "body": ["@include margin(x,auto);"], "description": "@mixin margin-x-auto" },
-	"@mixin margin-y-0": { "prefix": "my-0", "body": ["@include margin(y,0);"], "description": "@mixin margin-y-0" },
-	"@mixin margin-y-1": { "prefix": "my-1", "body": ["@include margin(y,1);"], "description": "@mixin margin-y-1" },
-	"@mixin margin-y-2": { "prefix": "my-2", "body": ["@include margin(y,2);"], "description": "@mixin margin-y-2" },
-	"@mixin margin-y-3": { "prefix": "my-3", "body": ["@include margin(y,3);"], "description": "@mixin margin-y-3" },
-	"@mixin margin-y-4": { "prefix": "my-4", "body": ["@include margin(y,4);"], "description": "@mixin margin-y-4" },
-	"@mixin margin-y-5": { "prefix": "my-5", "body": ["@include margin(y,5);"], "description": "@mixin margin-y-5" },
-	"@mixin margin-y-auto": { "prefix": "my-auto", "body": ["@include margin(y,auto);"], "description": "@mixin margin-y-auto" },
 
-	"@mixin padding-0": { "prefix": "p-0", "body": ["@include padding('',0);"], "description": "@mixin padding-0" },
-	"@mixin padding-1": { "prefix": "p-1", "body": ["@include padding('',1);"], "description": "@mixin padding-1" },
-	"@mixin padding-2": { "prefix": "p-2", "body": ["@include padding('',2);"], "description": "@mixin padding-2" },
-	"@mixin padding-3": { "prefix": "p-3", "body": ["@include padding('',3);"], "description": "@mixin padding-3" },
-	"@mixin padding-4": { "prefix": "p-4", "body": ["@include padding('',4);"], "description": "@mixin padding-4" },
-	"@mixin padding-5": { "prefix": "p-5", "body": ["@include padding('',5);"], "description": "@mixin padding-5" },
-	"@mixin padding-auto": { "prefix": "p-auto", "body": ["@include padding('',auto);"], "description": "@mixin padding-auto" },
-	"@mixin padding-top-0": { "prefix": "pt-0", "body": ["@include padding(top,0);"], "description": "@mixin padding-top-0" },
-	"@mixin padding-top-1": { "prefix": "pt-1", "body": ["@include padding(top,1);"], "description": "@mixin padding-top-1" },
-	"@mixin padding-top-2": { "prefix": "pt-2", "body": ["@include padding(top,2);"], "description": "@mixin padding-top-2" },
-	"@mixin padding-top-3": { "prefix": "pt-3", "body": ["@include padding(top,3);"], "description": "@mixin padding-top-3" },
-	"@mixin padding-top-4": { "prefix": "pt-4", "body": ["@include padding(top,4);"], "description": "@mixin padding-top-4" },
-	"@mixin padding-top-5": { "prefix": "pt-5", "body": ["@include padding(top,5);"], "description": "@mixin padding-top-5" },
-	"@mixin padding-top-auto": { "prefix": "pt-auto", "body": ["@include padding(top,auto);"], "description": "@mixin padding-top-auto" },
-	"@mixin padding-right-0": { "prefix": "pr-0", "body": ["@include padding(right,0);"], "description": "@mixin padding-right-0" },
-	"@mixin padding-right-1": { "prefix": "pr-1", "body": ["@include padding(right,1);"], "description": "@mixin padding-right-1" },
-	"@mixin padding-right-2": { "prefix": "pr-2", "body": ["@include padding(right,2);"], "description": "@mixin padding-right-2" },
-	"@mixin padding-right-3": { "prefix": "pr-3", "body": ["@include padding(right,3);"], "description": "@mixin padding-right-3" },
-	"@mixin padding-right-4": { "prefix": "pr-4", "body": ["@include padding(right,4);"], "description": "@mixin padding-right-4" },
-	"@mixin padding-right-5": { "prefix": "pr-5", "body": ["@include padding(right,5);"], "description": "@mixin padding-right-5" },
-	"@mixin padding-right-auto": { "prefix": "pr-auto", "body": ["@include padding(right,auto);"], "description": "@mixin padding-right-auto" },
-	"@mixin padding-bottom-0": { "prefix": "pb-0", "body": ["@include padding(bottom,0);"], "description": "@mixin padding-bottom-0" },
-	"@mixin padding-bottom-1": { "prefix": "pb-1", "body": ["@include padding(bottom,1);"], "description": "@mixin padding-bottom-1" },
-	"@mixin padding-bottom-2": { "prefix": "pb-2", "body": ["@include padding(bottom,2);"], "description": "@mixin padding-bottom-2" },
-	"@mixin padding-bottom-3": { "prefix": "pb-3", "body": ["@include padding(bottom,3);"], "description": "@mixin padding-bottom-3" },
-	"@mixin padding-bottom-4": { "prefix": "pb-4", "body": ["@include padding(bottom,4);"], "description": "@mixin padding-bottom-4" },
-	"@mixin padding-bottom-5": { "prefix": "pb-5", "body": ["@include padding(bottom,5);"], "description": "@mixin padding-bottom-5" },
-	"@mixin padding-bottom-auto": { "prefix": "pb-auto", "body": ["@include padding(bottom,auto);"], "description": "@mixin padding-bottom-auto" },
-	"@mixin padding-left-0": { "prefix": "pl-0", "body": ["@include padding(left,0);"], "description": "@mixin padding-left-0" },
-	"@mixin padding-left-1": { "prefix": "pl-1", "body": ["@include padding(left,1);"], "description": "@mixin padding-left-1" },
-	"@mixin padding-left-2": { "prefix": "pl-2", "body": ["@include padding(left,2);"], "description": "@mixin padding-left-2" },
-	"@mixin padding-left-3": { "prefix": "pl-3", "body": ["@include padding(left,3);"], "description": "@mixin padding-left-3" },
-	"@mixin padding-left-4": { "prefix": "pl-4", "body": ["@include padding(left,4);"], "description": "@mixin padding-left-4" },
-	"@mixin padding-left-5": { "prefix": "pl-5", "body": ["@include padding(left,5);"], "description": "@mixin padding-left-5" },
-	"@mixin padding-left-auto": { "prefix": "pl-auto", "body": ["@include padding(left,auto);"], "description": "@mixin padding-left-auto" },
-	"@mixin padding-x-0": { "prefix": "px-0", "body": ["@include padding(x,0);"], "description": "@mixin padding-x-0" },
-	"@mixin padding-x-1": { "prefix": "px-1", "body": ["@include padding(x,1);"], "description": "@mixin padding-x-1" },
-	"@mixin padding-x-2": { "prefix": "px-2", "body": ["@include padding(x,2);"], "description": "@mixin padding-x-2" },
-	"@mixin padding-x-3": { "prefix": "px-3", "body": ["@include padding(x,3);"], "description": "@mixin padding-x-3" },
-	"@mixin padding-x-4": { "prefix": "px-4", "body": ["@include padding(x,4);"], "description": "@mixin padding-x-4" },
-	"@mixin padding-x-5": { "prefix": "px-5", "body": ["@include padding(x,5);"], "description": "@mixin padding-x-5" },
-	"@mixin padding-x-auto": { "prefix": "px-auto", "body": ["@include padding(x,auto);"], "description": "@mixin padding-x-auto" },
-	"@mixin padding-y-0": { "prefix": "py-0", "body": ["@include padding(y,0);"], "description": "@mixin padding-y-0" },
-	"@mixin padding-y-1": { "prefix": "py-1", "body": ["@include padding(y,1);"], "description": "@mixin padding-y-1" },
-	"@mixin padding-y-2": { "prefix": "py-2", "body": ["@include padding(y,2);"], "description": "@mixin padding-y-2" },
-	"@mixin padding-y-3": { "prefix": "py-3", "body": ["@include padding(y,3);"], "description": "@mixin padding-y-3" },
-	"@mixin padding-y-4": { "prefix": "py-4", "body": ["@include padding(y,4);"], "description": "@mixin padding-y-4" },
-	"@mixin padding-y-5": { "prefix": "py-5", "body": ["@include padding(y,5);"], "description": "@mixin padding-y-5" },
-	"@mixin padding-y-auto": { "prefix": "py-auto", "body": ["@include padding(y,auto);"], "description": "@mixin padding-y-auto" },
+	"@mixin margin": {
+		"prefix": ["m","margin"],
+		"body": ["@include margin(${1|'',x,y,top,left,bottom,right|},${2|auto,1,2,3,4,5|});"],
+		"description": "@mixin margin-" 
+	},
+	"@mixin padding": {
+		"prefix": ["p","padding"],
+		"body": ["@include padding(${1|'',x,y,top,left,bottom,right|},${2|1,2,3,4,5|});"],
+		"description": "@mixin padding-" 
+	},
 
 	//// css ////
 	"multi-bg-setting": {
@@ -170,13 +103,22 @@
 		],
 		"description": "multi-bg-setting"
 	},
-	"basic-font-setting": {
-		"prefix": "font-size-wieght-color",
+	"container": {
+		"prefix": ".container",
 		"body": [
-			"color: #fff;",
-			"font-size: 1rem;",
-			"font-weight: normal;"
+			".container {",
+			"  $0",
+			"};"
 		],
-		"description": "basic-font-setting"
+		"description": "container"
+	},
+	"col-n": {
+		"prefix": ".col-n",
+		"body": [
+			".col-${1:n} {",
+			"  $0",
+			"};"
+		],
+		"description": "col-n"
 	}
 }

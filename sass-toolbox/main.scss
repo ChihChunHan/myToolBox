@@ -10,10 +10,3 @@
 @import './layout/grid';
 
 @import './page/index.scss';
-
-div{
-  @include apply('');
-  .test{
-    @include apply("d-none sm:d-flex");
-  }
-}

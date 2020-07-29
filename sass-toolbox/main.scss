@@ -1,11 +1,11 @@
 @import './base/reset';
 @import './base/setting';
-@import './base/typography';
 
 @import './helpers/variables';
 @import './helpers/function';
 @import './helpers/mixin';
 
+@import './layout/typography';
 @import './layout/utilities';
 @import './layout/grid';
 

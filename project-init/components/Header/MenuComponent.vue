@@ -1,22 +1,14 @@
 <template>
-  <transition name="menu-show" duration="500">
-    <div class="menu d-none md:d-block" v-show="menuIsOpen">
-      <a href="javascript:;" v-for="content of menuList" :key="'btn'+content.id">{{content.title}}</a>
+  <transition name="menu-show" :duration="{enter:1400,leave:500}">
+    <div class="menu-component d-none md:d-block" v-show="menuIsOpen">
+      <div v-for="content of menuList" :key="'btn'+content.id">
+        <a href="javascript:;">{{content.title}}</a>
+      </div>
     </div>
   </transition>
 </template>
 
 <style lang="scss">
-
-.menu-show {
-  &-enter,&-leave-to {
-    opacity: 0;
-  }
-  &-enter-active,&-leave-active {
-    transition: opacity .5s;
-  }
-}
-
 </style>
 
 <script>
@@ -28,7 +20,7 @@ export default {
     menuList:{
       type:Array
     }
-  }
+  },
 };
 </script>
 

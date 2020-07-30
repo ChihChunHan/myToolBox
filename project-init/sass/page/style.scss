@@ -1,5 +1,5 @@
 header {
-  background-color: $c_main;
+  background-color: $header_bg_color;
   > .container {
     min-height: $header_height;
   };
@@ -7,8 +7,8 @@ header {
 
 footer {
   box-sizing: content-box;
-  border-top: $footer_border_top solid $c_sub;
   min-height: $footer_height;
-  background-color: $c_main;
+  background-color: $footer_bg_color;
+  border-top: $footer_border_top solid $footer_border_color;
   overflow: auto;
 }

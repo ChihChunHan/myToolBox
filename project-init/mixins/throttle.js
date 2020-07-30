@@ -1,21 +1,21 @@
 export default {
   data() {
     return {
-      throttleRunning: false,
       throttleTimer: null,
     }
   },
   methods: {
     throttle(fn,timeOut) {
-      if (this.throttleRunning === true) return false 
       
-      this.throttleRunning = true;
-      clearTimeout(this.throttleTimer)
+      if (this.throttleTimer !== null ) return false 
+
       this.throttleTimer = setTimeout(() => {
-        this.throttleRunning = false;
+        clearTimeout(this.throttleTimer)
+        this.throttleTimer = null
       }, timeOut);
       
       fn()
+
     },
   },
 }

@@ -7,29 +7,72 @@
     &-prev,&-next {
       position: absolute;
       @include Y_center();
+
+      border-style: solid;
+      border-color: rgba(#fff,0.5);
+      border-width: 5px;
+
       @include size(20px);
+      @include rwd(md){
+        @include size(30px);
+        border-width: 7px;
+      };
+      @include rwd(lg){
+        @include size(40px);
+        border-width: 10px;
+      };
+
+
+      &:hover{
+        border-color: rgba(#fff,0.8);
+      }
     }
     
     &-prev {
       left: 20px;
-
-      border-top: 5px solid #000;
-      border-left: 5px solid #000;
+      border-right-width: 0;
+      border-bottom-width: 0;
       transform: rotate(-45deg);
+      
     }
     &-next {
       right: 20px;
-
-      border-right: 5px solid #000;
-      border-bottom: 5px solid #000;
+      border-top-width: 0;
+      border-left-width: 0;
       transform: rotate(-45deg);
     }
   }
 
   &.point {
-    @include size(10px);
-    @include margin("", 3);
-    background-color: rgba(#000, 0.5);
-    border-radius: 50%;
+    @include margin("", 2);
+    width: 100%;
+    @include rwd(sm){
+      width: 60px;
+    };
+    height: 10px;
+
+    position: relative;
+    
+    border: 1px solid rgba(#fff, 0.8);
+    border-radius: 5px;
+    
+    background-color: rgba(#fff, 0.5);
+    background-size: 200%;
+    transition: background-image 3s;
+    &.active{
+      background-image: linear-gradient(to right, rgba(#fff,0.8) 50% , transparent  50%);
+      animation: counting 3s ease-in;
+    }
   }
 }
+
+@keyframes counting {
+  from{
+    background-position: 100% 50%;
+  }
+  to{
+    background-position: 0% 50%;
+  }
+}
+
+

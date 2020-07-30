@@ -1,14 +1,20 @@
 <template>
   <header>
     <div class="container">
-      <div class="col-12 d-flex justify-between items-center">
+      <div class="col-12 d-flex justify-center md:justify-between items-center"> 
         <div class="logo">
-          <img src="../../assets/gtd_logo.png" />
+          <img src="" />
         </div>
-        <button class="menu_btn md:d-none" @click="toggleMenu" :disabled="throttleRunning">menu</button>
+        <button class="menu_btn" @click="toggleMenu" :state="throttleTimer">
+          <span 
+            class="hamburger" 
+            :class="{active:menuIsOpen}"
+          ></span>
+        </button>
         <MenuComponent
           :menuIsOpen="menuIsOpen" 
-          :menuList="menuList" />
+          :menuList="menuList"
+        />
       </div>
     </div>
   </header>
@@ -41,7 +47,7 @@ export default {
   methods: {
     toggleMenu() {
       this.throttle(() => {
-        this.menuIsOpen = !this.menuIsOpen;
+      this.menuIsOpen = !this.menuIsOpen;
       }, 600);
     },
   },

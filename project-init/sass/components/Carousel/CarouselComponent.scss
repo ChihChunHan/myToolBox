@@ -1,7 +1,7 @@
 @import "./Container/ContainerComponent.scss";
 @import "./Controller/ControllerComponent.scss";
 
-@function ratioHeight($width,$ratio:$ratio){
+@function ratioHeight($width,$ratio:$bn_ratio){
   @return $width / $ratio
 };
 

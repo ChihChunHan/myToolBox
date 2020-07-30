@@ -28,6 +28,16 @@
   transform: translateY(-50%);
 }
 
+@mixin before_align {
+  &::before{
+    content: "";
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    vertical-align:middle;
+  }
+}
+
 //// css selector ////
 
 // nth-of-type

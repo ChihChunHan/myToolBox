@@ -2,7 +2,7 @@
   <div class="controller-component">
     <ButtonComponent class="arrow-prev" @pass-handler="clickBtn(nowIndex-1)" :key="'prev'"></ButtonComponent>
     <div class="pointer-container">
-    <ButtonComponent class="point" @pass-handler="clickBtn(n-1)" v-for="n in total" :key="'b'+n"></ButtonComponent>
+    <ButtonComponent class="point" :class="{active:n-1===nowIndex}" @pass-handler="clickBtn(n-1)" v-for="n in total" :key="'b'+n"></ButtonComponent>
     </div>
     <ButtonComponent class="arrow-next" @pass-handler="clickBtn(nowIndex+1)" :key="'next'"></ButtonComponent>
   </div>

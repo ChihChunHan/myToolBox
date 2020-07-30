@@ -58,7 +58,7 @@ export default {
   methods: {
     changeIndex(num) {
       this.throttle(()=>{
-        if (this.newIndex === num) return false;
+      if (this.newIndex === num) return false;
       this.moveWay = this.nowIndex < num ? "next" : "prev";
       this.nowIndex = (num + this.total) % this.total;
       },600);

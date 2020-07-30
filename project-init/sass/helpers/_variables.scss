@@ -1,25 +1,39 @@
-$c_main:#4F4D53;
-$c_sub:#E8BE02;
+$c_main: #4f4d53;
+$c_sub: #e8be02;
 
-$ratio: 1440/505;
+$bn_ratio: 1440/505;
 
-$h1_fz:100px;
-$h1_fw:900;
+$default_font_family: "Roboto", sans-serif;
+$default_letter_spacing: normal;
+$default_line_height: 1.5;
 
-$h2_fz:64px;
-$h2_fw:900;
+$fw_lv_1: 400;
+$fw_lv_2: 900;
 
-$h3_fz:20px;
-$h3_fw:900;
+$h1_fz: 100px;
+$h1_fw: $fw_lv_2;
+$h1_c: $c_main;
 
-$h4_fz:14px;
-$h4_fw:400;
+$h2_fz: 64px;
+$h2_fw: $fw_lv_2;
+$h2_c: $c_sub;
 
-$p_fz:20px;
-$p_fw:400;
+$h3_fz: 20px;
+$h3_fw: $fw_lv_2;
+$h3_c: $c_sub;
 
-$header_height:48px; 
-$footer_height:320px;
-$footer_border_top:12px;
+$h4_fz: 14px;
+$h4_fw: $fw_lv_1;
+$h4_c: #fff;
 
+$p_fz: 20px;
+$p_fw: $fw_lv_1;
+$p_c: $c_main;
 
+$header_height: 48px;
+$header_bg_color: $c_main;
+
+$footer_height: 320px;
+$footer_border_top: 12px;
+$footer_border_color: $c_sub;
+$footer_bg_color: $c_main;

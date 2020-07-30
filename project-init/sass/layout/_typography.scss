@@ -20,7 +20,7 @@ h1 {
   @include rwd(md){ font-size: $h1_fz * 0.4; };
   @include rwd(lg){ font-size: $h1_fz; };
   font-weight: $h1_fw;
-  color: $c_main;
+  color: $h1_c;
 }
 
 h2 {
@@ -28,19 +28,19 @@ h2 {
   @include rwd(md){ font-size: $h2_fz * 0.5; };
   @include rwd(lg) { font-size: $h2_fz; }
   font-weight: $h2_fw;
-  color: $c_sub;
+  color: $h2_c;
 }
 
 h3 {
   font-size: $h3_fz;
   font-weight: $h3_fw;
-  color: $c_sub;
+  color: $h3_c;
 }
 
 h4 {
   font-size: $h4_fz;
   font-weight: $h4_fw;
-  color: #fff;
+  color: $h4_c;
 }
 
 p {
@@ -48,6 +48,6 @@ p {
   @include rwd(md) { font-size: $p_fz * 0.85; }
   @include rwd(lg) { font-size: $p_fz; }
   font-weight: $p_fw;
-  color: $c_main;
+  color: $p_c;
 }
 

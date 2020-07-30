@@ -1,17 +1,77 @@
 @import "./MenuComponent";
 
 header {
+  position: relative;
+
   .logo {
-    max-width: 43px;
-    width: 100%;
+    width: 43px;
     > img {
       width: 100%;
     }
   }
 
   .menu_btn{
-    border: 3px solid #000;
-    background-color: $c_sub;
-    font-weight: 900;
+    position: absolute;
+    @include Y-center;
+    right: 0;
+
+    height: 100%;
+    width: $header_height;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include rwd(md){
+      display: none;
+    };
+
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+
+  }
+}
+
+
+.hamburger {
+  background-color: #ddd;
+  &.active{
+    background-color: transparent;
+  }
+  transition: background-color .2s ease-out;
+  display: block;
+  height: 2px;
+  width: 18px;
+  border-radius: 1px;
+  position: relative;
+
+  &:before,
+  &:after {
+    background-color: #ddd;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 1px;
+    position: absolute;
+    transform-origin: center center;
+    transition: transform .2s ease-out , top .2s ease-out;
+  }
+  
+  &:before {
+    top: 5px;
+  }
+  &.active::before{
+    top: 0;
+    transform: rotate(45deg);
+  }
+  
+  &:after {
+    top: -5px;
+  }
+  &.active::after{
+    top: 0;
+    transform: rotate(-45deg);
   }
 }

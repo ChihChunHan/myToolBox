@@ -1,31 +1,87 @@
-.menu {
-  @include apply(d-flex flex-col justify-center items-center);
+.menu-component {
+  @include apply( d-flex flex-col justify-center items-center );
   position: absolute;
   top: $header_height;
   left: 0;
+
   width: 100%;
-  height: 200px;
-  background-color: $c_sub;
+  height: auto;
+
+  background-color: $c_main;
+  box-shadow: 0px 6px 8px -2px rgba(#000,0.2);
+
   z-index: 1;
-  > a {
+
+  > div {
+
     width: 100%;
-    text-align: center;
-    color: #fff;
-  }
-  @include rwd(md){
-    height: auto;
-    display: block !important;
-    position: static;
-    width: auto;
-    background-color: transparent;
+    height: $header_height;
+    position: relative;
+
     > a {
+      font-size: 0.9rem;
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-align: center;
       color: #fff;
-      font-size: 1rem;
-      font-weight: 400;
-      @include margin(x,3);
+      @include before_align;
+      transition:background-color .25s,color .25s ;
       &:hover {
+        background-color: lighten($c_main, 5%);
         color: $c_sub
       }
     }
+  }
+
+  @include rwd(md){
+    display: flex !important;
+    justify-content: center;
+    flex-direction: row;
+    position: static;
+
+    width: auto;
+
+    background-color: transparent;
+    box-shadow: unset;
+    > div {
+      border-left: 1px solid lighten($c_main,10%);
+      @include nth(-1){
+        border-right: 1px solid lighten($c_main,10%);
+      };
+      > a {
+        @include padding(x,8);
+      }
+    }
   };
+}
+
+.menu-show {
+  &-enter {
+    > div {
+      height: 0 !important;
+
+      > a {
+        opacity: 0 !important;
+      }
+    }
+  }
+  &-enter-active{
+      @for $i from 1 through 3 {
+      > div {
+        @include nth($i){
+          transition: height .25s;
+          > a {
+            transition: opacity .2s #{($i+1)*0.1}s;
+          }
+        };
+      }
+    }
+  }
+  &-leave-to {
+    opacity: 0 !important;
+  }
+  &-leave-active{
+    transition: opacity .5s;
+  }
 }

@@ -3,8 +3,17 @@
 .controller-component {
   width: 100%;
   > div.pointer-container {
+    width: 100%;
+    @include rwd(md){
+      width: auto;
+    };
+    
     position: absolute;
     @include X_center();
     bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

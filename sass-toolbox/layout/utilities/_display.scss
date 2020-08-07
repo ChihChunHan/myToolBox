@@ -1,0 +1,22 @@
+@mixin display {
+  &-inline{ display: inline; }
+  &-block{ display: block; }
+  &-inline-block{ display: inline-block; }
+  &-flex{ display: flex; }
+  &-none{ display: none; }
+}
+
+@mixin g-d {
+  .d { 
+    @include display ;
+    @each $key in $media_list {
+      @include rwd($key) {
+        @at-root .#{$key}\:{
+          &d {
+            @include display ;
+          }      
+        }
+      }
+    }
+  }
+}

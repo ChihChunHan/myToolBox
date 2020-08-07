@@ -1,0 +1,18 @@
+
+@mixin max-width{
+  &-n { max-width: none; };
+  &-100 { max-width: 100% } ;
+  &-90 { max-width: 90% } ;
+}
+
+@mixin g-max-w {
+  .max-w { @include max-width ;}
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &max-w { @include max-width ;}
+      }
+    }
+  }
+}

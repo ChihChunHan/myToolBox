@@ -1,0 +1,26 @@
+@mixin float{
+  &-left{ float: left; };
+  &-right{ float: right; };
+  &-none{ float: none; };
+  &-fix {
+    &::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+  };
+}
+
+@mixin g-float {
+  .float { @include float ;}
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &float {
+          @include float;
+        }    
+      }
+    }
+  }
+}

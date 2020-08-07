@@ -1,0 +1,63 @@
+@import "./utilities/display";
+@import "./utilities/flex";
+@import "./utilities/float";
+@import "./utilities/text-align";
+@import "./utilities/max-width";
+@import "./utilities/size";
+
+
+// @include
+
+@include g-d;
+@include g-flex;
+@include g-float;
+@include g-text;
+@include g-max-w;
+@include g-size;
+
+
+// @apply 2.0
+
+@mixin apply($us_string){
+  $u_list:str_slice_by_blink($us_string);
+  @each $u in $u_list {
+    @extend #{string_handler($u)};
+  }
+};
+
+@function str_slice_by_blink($str) {
+  $list: ();
+  @while get_blink($str) != null {
+    $list: append($list, get_first_str($str));
+    $str: get_rest_str($str);
+  }
+  $list: append($list, $str);
+  @return $list;
+}
+@function get_blink($str) {
+  @return str_index($str, " ");
+}
+@function get_first_str($str) {
+  @return str_slice($str, 1, (get_blink($str) - 1));
+}
+@function get_rest_str($str) {
+  @return str_slice($str, (get_blink($str) + 1));
+}
+
+
+@function string_handler($string) {
+  $new_string : add_dot(add_EC($string));
+  @return $new_string
+};
+
+@function add_EC($string){
+  $id : str-index($string, ":");
+  @if $id == null {@return $string}
+  $new_string : str-insert($string, "\\", $id);
+  @return $new_string
+};
+
+@function add_dot($string){
+  $new_string : str-insert($string, ".", 0);
+  @return $new_string
+};

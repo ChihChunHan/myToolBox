@@ -1,0 +1,70 @@
+
+@mixin flex-direction {
+  &-row { flex-direction: row; }
+  &-row-reverse { flex-direction: row-reverse; }
+  &-col { flex-direction: column; }
+  &-col-reverse { flex-direction: column-reverse; }
+}
+@mixin justify-content {
+  &-start { justify-content: flex-start; }
+  &-center { justify-content: center; }
+  &-end { justify-content: flex-end; }
+  &-between { justify-content: space-between; }
+  &-around { justify-content: space-around; }
+}
+@mixin align-items {
+  &-start { align-items: flex-start; }
+  &-center { align-items: center; }
+  &-end { align-items: flex-end; }
+  &-stretch { align-items: stretch; }
+}
+
+@mixin align-self {
+  &-start { align-self: flex-start; }
+  &-center { align-self: center; }
+  &-end { align-self: flex-end; }
+  &-stretch { align-self: stretch; }
+}
+
+@mixin flex-wrap {
+  &-no-wrap { flex-wrap: nowrap; }
+  &-wrap { flex-wrap: wrap; }
+  &-wrap-reverse { flex-wrap: wrap-reverse; }
+}
+
+@mixin order {
+  &-first { order: -9999; }
+  &-last { order: 9999; }
+  &-none { order: 0; }
+  @for $i from 1 to 12 {
+    &-#{$i} { order: $i; }
+  }
+}
+
+@mixin g-flex {
+  .flex { 
+    @include flex-direction;
+    @include flex-wrap;
+    &-center-center { @include flex-center-center;}
+  }
+  .justify { @include justify-content }
+  .items { @include align-items }
+  .self { @include align-self }
+  .order { @include order }
+
+  @each $key in $media_list {
+    @include rwd($key) {
+      @at-root .#{$key}\:{
+        &flex { 
+          @include flex-direction;
+          @include flex-wrap;
+          &-center-center { @include flex-center-center;}
+        }
+        &justify { @include justify-content }
+        &items { @include align-items }
+        &self { @include align-self }
+        &order { @include order }
+      }
+    }
+  }
+}
